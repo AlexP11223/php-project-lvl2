@@ -1,0 +1,28 @@
+{
+    "name": "alexp11223/gendiff",
+    "description": "hexlet.io project 2",
+    "keywords": ["diff"],
+    "homepage": "https://github.com/AlexP11223/php-project-lvl2",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex P",
+            "email": "alex.pantec@gmail.com"
+        }
+    ],
+    "scripts": {
+        "phpcs": "phpcs"
+    },
+    "autoload": {
+        "files": [
+            "src/cli.php"
+        ]
+    },
+    "bin": [
+        "bin/gendiff"
+    ],
+    "require": {
+        "docopt/docopt": "^1.0"
+    }
+}
