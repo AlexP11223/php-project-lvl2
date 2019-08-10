@@ -12,4 +12,4 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-run(array_slice($_SERVER['argv'], 1));
+run();

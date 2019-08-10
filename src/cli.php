@@ -2,7 +2,7 @@
 
 namespace Gendiff\cli;
 
-function run(array $argv)
+function run()
 {
     $doc = <<<DOC
 Generate diff
@@ -19,5 +19,5 @@ Options:
 
 DOC;
 
-    $args = \Docopt::handle($doc, ['argv' => $argv]);
+    $args = \Docopt::handle($doc);
 }
