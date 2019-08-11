@@ -2,3 +2,4 @@
 
 # gendiff
 
+[![asciicast](https://asciinema.org/a/l4zcvNJycAmIUV6um04F6Cklm.svg)](https://asciinema.org/a/l4zcvNJycAmIUV6um04F6Cklm)
