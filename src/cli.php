@@ -1,6 +1,8 @@
 <?php
 
-namespace Gendiff\cli;
+namespace Differ\cli;
+
+use function Differ\genDiff;
 
 function run()
 {
@@ -20,4 +22,9 @@ Options:
 DOC;
 
     $args = \Docopt::handle($doc);
+
+    $firstFilePath = $args['<firstFile>'];
+    $secondFilePath = $args['<secondFile>'];
+
+    echo genDiff(file_get_contents($firstFilePath), file_get_contents($secondFilePath)) . PHP_EOL;
 }
