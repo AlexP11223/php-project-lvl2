@@ -12,7 +12,9 @@
         }
     ],
     "scripts": {
-        "phpcs": "phpcs"
+        "phpcs": "phpcs",
+        "phpunit": "phpunit",
+        "test": "phpunit tests"
     },
     "autoload": {
         "files": [
@@ -27,6 +29,7 @@
         "docopt/docopt": "^1.0"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "^3.4"
+        "squizlabs/php_codesniffer": "^3.4",
+        "phpunit/phpunit": "^8.3"
     }
 }
