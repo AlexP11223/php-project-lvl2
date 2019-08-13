@@ -19,7 +19,8 @@
     "autoload": {
         "files": [
             "src/cli.php",
-            "src/diff.php"
+            "src/diff.php",
+            "src/parsers.php"
         ]
     },
     "bin": [

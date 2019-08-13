@@ -6,16 +6,15 @@ use PHPUnit\Framework\TestCase;
 
 class DiffTest extends TestCase
 {
-    private static function loadFixtureFile($filePath)
+    private static function getFixtureFilePath($relativeFilePath)
     {
-        $fullFilePath = dirname(__FILE__) . '/fixtures/' . $filePath;
-        return file_get_contents($fullFilePath);
+        return dirname(__FILE__) . '/fixtures/' . $relativeFilePath;
     }
 
     private static function checkDiff($filePath1, $filePath2, $expectedDiffFilePath)
     {
-        $expectedDiff = trim(self::loadFixtureFile($expectedDiffFilePath));
-        $diff = genDiff(self::loadFixtureFile($filePath1), self::loadFixtureFile($filePath2));
+        $expectedDiff = trim(file_get_contents(self::getFixtureFilePath($expectedDiffFilePath)));
+        $diff = genDiffForFiles(self::getFixtureFilePath($filePath1), self::getFixtureFilePath($filePath2));
         self::assertEquals($expectedDiff, $diff);
     }
 

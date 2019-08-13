@@ -2,7 +2,7 @@
 
 namespace Differ\cli;
 
-use function Differ\genDiff;
+use function Differ\genDiffForFiles;
 
 function run()
 {
@@ -26,5 +26,5 @@ DOC;
     $firstFilePath = $args['<firstFile>'];
     $secondFilePath = $args['<secondFile>'];
 
-    echo genDiff(file_get_contents($firstFilePath), file_get_contents($secondFilePath)) . PHP_EOL;
+    echo genDiffForFiles($firstFilePath, $secondFilePath) . PHP_EOL;
 }

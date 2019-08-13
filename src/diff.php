@@ -2,6 +2,8 @@
 
 namespace Differ;
 
+use function Differ\parsers\load;
+
 const ADDED = 'added';
 const REMOVED = 'removed';
 const CHANGED = 'changed';
@@ -21,14 +23,11 @@ function stateChar($state)
     }
 }
 
-function genDiff($firstFileContent, $secondFileContent): string
+function diff(array $firstObj, array $secondObj)
 {
-    $firstObj = json_decode($firstFileContent, true);
-    $secondObj = json_decode($secondFileContent, true);
-
     $keys = array_keys(array_merge($firstObj, $secondObj));
 
-    $result = array_map(function ($key) use ($firstObj, $secondObj) {
+    return array_map(function ($key) use ($firstObj, $secondObj) {
         if (!array_key_exists($key, $secondObj)) {
             return [$key, $firstObj[$key], REMOVED];
         }
@@ -40,8 +39,13 @@ function genDiff($firstFileContent, $secondFileContent): string
         }
         return [$key, $firstObj[$key], UNCHANGED];
     }, $keys);
+}
 
-    $simplifiedResult = array_reduce($result, function ($acc, $it) {
+function genDiff(array $firstObj, array $secondObj)
+{
+    $diff = diff($firstObj, $secondObj);
+
+    $simplifiedDiff = array_reduce($diff, function ($acc, $it) {
         [$key, $value, $state] = $it;
 
         switch ($state) {
@@ -63,7 +67,12 @@ function genDiff($firstFileContent, $secondFileContent): string
         $encodedValue = json_encode($value);
         $stateChar = stateChar($state);
         return "  $stateChar $key: $encodedValue";
-    }, $simplifiedResult);
+    }, $simplifiedDiff);
 
     return implode(PHP_EOL, array_merge(['{'], $lines, ['}']));
+}
+
+function genDiffForFiles($firstFilePath, $secondFilePath): string
+{
+    return genDiff(load($firstFilePath), load($secondFilePath));
 }
