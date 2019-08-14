@@ -18,10 +18,16 @@ class DiffTest extends TestCase
         self::assertEquals($expectedDiff, $diff);
     }
 
-    public function testNormal()
+    public function testNormalJson()
     {
         self::checkDiff('1.json', '2.json', '1_2.diff');
         self::checkDiff('2.json', '1.json', '2_1.diff');
+    }
+
+    public function testNormalYaml()
+    {
+        self::checkDiff('1.yaml', '2.yaml', '1_2.diff');
+        self::checkDiff('2.yaml', '1.yaml', '2_1.diff');
     }
 
     public function testSame()

@@ -2,9 +2,16 @@
 
 namespace Differ\parsers;
 
+use Symfony\Component\Yaml\Yaml;
+
 function parseJson($text)
 {
     return json_decode($text, true);
+}
+
+function parseYaml($text)
+{
+    return (array) Yaml::parse($text, Yaml::PARSE_OBJECT_FOR_MAP);
 }
 
 function load($filePath)
@@ -14,6 +21,9 @@ function load($filePath)
     switch ($ext) {
         case 'json':
             return parseJson($content);
+        case 'yaml':
+        case 'yml':
+            return parseYaml($content);
         default:
             throw new \Exception("Unknown type $ext");
     }
