@@ -3,6 +3,7 @@
 namespace Differ;
 
 use function Differ\parsers\load;
+use function Funct\Collection\flatten;
 
 const ADDED = 'added';
 const REMOVED = 'removed';
@@ -45,22 +46,20 @@ function genDiff(array $firstObj, array $secondObj)
 {
     $diff = diff($firstObj, $secondObj);
 
-    $simplifiedDiff = array_reduce($diff, function ($acc, $it) {
+    $simplifiedDiff = flatten(array_map(function ($it) {
         [$key, $value, $state] = $it;
 
         switch ($state) {
             case CHANGED:
                 [$old, $new] = $value;
-                $acc[] = [$key, $old, REMOVED];
-                $acc[] = [$key, $new, ADDED];
-                break;
+                return [
+                    [$key, $old, REMOVED],
+                    [$key, $new, ADDED]
+                ];
             default:
-                $acc[] = $it;
-                break;
+                return [$it];
         }
-
-        return $acc;
-    }, []);
+    }, $diff));
 
     $lines = array_map(function ($it) {
         [$key, $value, $state] = $it;
