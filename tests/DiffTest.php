@@ -24,10 +24,20 @@ class DiffTest extends TestCase
         self::checkDiff('basic2.json', 'basic1.json', 'basic2_basic1.diff');
     }
 
+    public function testComplexJson()
+    {
+        self::checkDiff('complex1.json', 'complex2.json', 'complex1_complex2.diff');
+    }
+
     public function testBasicYaml()
     {
         self::checkDiff('basic1.yaml', 'basic2.yaml', 'basic1_basic2.diff');
         self::checkDiff('basic2.yaml', 'basic1.yaml', 'basic2_basic1.diff');
+    }
+
+    public function testComplexYaml()
+    {
+        self::checkDiff('complex1.yaml', 'complex2.json', 'complex1_complex2.diff');
     }
 
     public function testSame()

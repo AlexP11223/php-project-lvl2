@@ -20,7 +20,8 @@
         "files": [
             "src/cli.php",
             "src/diff.php",
-            "src/parsers.php"
+            "src/parsers.php",
+            "src/utils.php"
         ]
     },
     "bin": [
