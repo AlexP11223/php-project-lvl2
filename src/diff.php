@@ -15,24 +15,25 @@ const TYPE_OBJECT = 'object';
 const TYPE_PROPERTY = 'property';
 // TODO: add array support?
 
-function makeNode($objectType, $state, $value, $children = [], $fields = [])
+function makeNode($objectType, $state, $oldValue, $newValue, $children = [], $fields = [])
 {
     return array_merge([
         'type' => $objectType,
         'state' => $state,
-        'value' => $value,
+        'oldValue' => $oldValue,
+        'newValue' => $newValue,
         'children' => $children
     ], $fields);
 }
 
-function makeObjectNode($state, $value, $properties = [])
+function makeObjectNode($state, $oldValue, $newValue, $properties = [])
 {
-    return makeNode(TYPE_OBJECT, $state, $value, $properties);
+    return makeNode(TYPE_OBJECT, $state, $oldValue, $newValue, $properties);
 }
 
-function makePropertyNode($state, $name, $value, $children = [])
+function makePropertyNode($state, $name, $oldValue, $newValue, $children = [])
 {
-    return makeNode(TYPE_PROPERTY, $state, $value, $children, ['name' => $name]);
+    return makeNode(TYPE_PROPERTY, $state, $oldValue, $newValue, $children, ['name' => $name]);
 }
 
 function diff($firstObj, $secondObj)
@@ -41,31 +42,27 @@ function diff($firstObj, $secondObj)
 
     $properties = array_map(function ($key) use ($firstObj, $secondObj) {
         if (!property_exists($secondObj, $key)) {
-            return makePropertyNode(REMOVED, $key, $firstObj->$key);
+            return makePropertyNode(REMOVED, $key, $firstObj->$key, null);
         }
         if (!property_exists($firstObj, $key)) {
-            return makePropertyNode(ADDED, $key, $secondObj->$key);
+            return makePropertyNode(ADDED, $key, null, $secondObj->$key);
         }
         if ($firstObj->$key !== $secondObj->$key) {
             $old = $firstObj->$key;
             $new = $secondObj->$key;
             if (is_object($old) && is_object($new)) {
-                return makePropertyNode(CHANGED, $key, null, [diff($old, $new)]);
+                return makePropertyNode(CHANGED, $key, $old, $new, [diff($old, $new)]);
             }
-            return makePropertyNode(CHANGED, $key, [$old, $new], []);
+            return makePropertyNode(CHANGED, $key, $old, $new, []);
         }
-        return makePropertyNode(UNCHANGED, $key, $firstObj->$key);
+        return makePropertyNode(UNCHANGED, $key, $firstObj->$key, $firstObj->$key);
     }, $keys);
 
     $isUnchanged = empty(array_filter($properties, function ($item) {
         return $item['state'] != UNCHANGED;
     }));
 
-    return makeObjectNode(
-        $isUnchanged ? UNCHANGED : CHANGED,
-        $isUnchanged ? $firstObj : null,
-        $properties
-    );
+    return makeObjectNode($isUnchanged ? UNCHANGED : CHANGED, $firstObj, $secondObj, $properties);
 }
 
 function genDiff($firstObj, $secondObj, $format = 'pretty')

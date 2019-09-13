@@ -32,19 +32,17 @@ function getChanges($node, $parents = [])
 
     switch ($node['type']) {
         case TYPE_PROPERTY:
-            $value = $node['value'];
             $path = implode('.', $currentParents);
             switch ($node['state']) {
                 case ADDED:
-                    $formattedValue = formatValue($value);
+                    $formattedValue = formatValue($node['newValue']);
                     return ["Added property '$path' with value '$formattedValue'"];
                 case REMOVED:
-                    $formattedValue = formatValue($value);
+                    $formattedValue = formatValue($node['oldValue']);
                     return ["Removed property '$path' with value '$formattedValue'"];
                 case CHANGED:
-                    [$old, $new] = $value;
-                    $formattedOld = formatValue($old);
-                    $formattedNew = formatValue($new);
+                    $formattedOld = formatValue($node['oldValue']);
+                    $formattedNew = formatValue($node['newValue']);
                     return ["Changed property '$path' from '$formattedOld' to '$formattedNew'"];
             }
     }

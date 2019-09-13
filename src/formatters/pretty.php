@@ -23,7 +23,7 @@ function traverse($node)
         case TYPE_OBJECT:
             switch ($node['state']) {
                 case UNCHANGED:
-                    return $node['value'];
+                    return $node['oldValue'];
                 case CHANGED:
                     $properties =  array_merge(...array_map(function ($property) {
                         return traverse($property);
@@ -34,22 +34,25 @@ function traverse($node)
         case TYPE_PROPERTY:
             $name = $node['name'];
             $isPrimitive = empty($node['children']);
-            $value = $isPrimitive ? $node['value'] : $node['children'][0];
             switch ($node['state']) {
                 case UNCHANGED:
-                    return [$name => $node['value']];
+                    return [$name => $node['oldValue']];
                 case ADDED:
+                    return [stateToName($node['state']) . $name => traverse(
+                        $isPrimitive ? $node['newValue'] : $node['children'][0]
+                    )];
                 case REMOVED:
-                    return [stateToName($node['state']) . $name => traverse($value)];
+                    return [stateToName($node['state']) . $name => traverse(
+                        $isPrimitive ? $node['oldValue'] : $node['children'][0]
+                    )];
                 case CHANGED:
                     if ($isPrimitive) {
-                        [$old, $new] = $value;
                         return [
-                            stateToName(REMOVED) . $name => $old,
-                            stateToName(ADDED) . $name => $new
+                            stateToName(REMOVED) . $name => $node['oldValue'],
+                            stateToName(ADDED) . $name => $node['newValue']
                         ];
                     }
-                    return [$name => traverse($value)];
+                    return [$name => traverse($node['children'][0])];
             }
             throw new \Exception("Unsupported PROPERTY state ${node['state']}");
     }
