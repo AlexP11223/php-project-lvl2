@@ -11,10 +11,10 @@ class DiffTest extends TestCase
         return dirname(__FILE__) . '/fixtures/' . $relativeFilePath;
     }
 
-    private static function checkDiff($filePath1, $filePath2, $expectedDiffFilePath)
+    private static function checkDiff($filePath1, $filePath2, $expectedDiffFilePath, $format = 'pretty')
     {
         $expectedDiff = trim(file_get_contents(self::getFixtureFilePath($expectedDiffFilePath)));
-        $diff = genDiffForFiles(self::getFixtureFilePath($filePath1), self::getFixtureFilePath($filePath2));
+        $diff = genDiffForFiles(self::getFixtureFilePath($filePath1), self::getFixtureFilePath($filePath2), $format);
         self::assertEquals($expectedDiff, $diff);
     }
 
@@ -43,5 +43,10 @@ class DiffTest extends TestCase
     public function testSame()
     {
         self::checkDiff('basic1.json', 'basic1.json', 'basic1_basic1.diff');
+    }
+
+    public function testPlain()
+    {
+        self::checkDiff('basic1.json', 'basic2.json', 'basic1_basic2.diff.plain', 'plain');
     }
 }
