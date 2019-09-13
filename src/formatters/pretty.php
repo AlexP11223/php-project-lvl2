@@ -34,7 +34,8 @@ function format($diff)
                 throw new \Exception("Unsupported OBJECT state ${node['state']}");
             case TYPE_PROPERTY:
                 $name = $node['name'];
-                $value = empty($node['children']) ? $node['value'] : $node['children'][0];
+                $isPrimitive = empty($node['children']);
+                $value = $isPrimitive ? $node['value'] : $node['children'][0];
                 switch ($node['state']) {
                     case UNCHANGED:
                         return [$name => $node['value']];
@@ -42,11 +43,11 @@ function format($diff)
                     case REMOVED:
                         return [stateToName($node['state']) . $name => $traverse($value)];
                     case CHANGED:
-                        if (empty($node['children'])) {
+                        if ($isPrimitive) {
                             [$old, $new] = $value;
                             return [
-                                stateToName(REMOVED) . $name => $traverse($old),
-                                stateToName(ADDED) . $name => $traverse($new)
+                                stateToName(REMOVED) . $name => $old,
+                                stateToName(ADDED) . $name => $new
                             ];
                         }
                         return [$name => $traverse($value)];
