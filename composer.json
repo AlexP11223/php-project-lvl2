@@ -21,7 +21,8 @@
             "src/cli.php",
             "src/diff.php",
             "src/parsers.php",
-            "src/utils.php"
+            "src/utils.php",
+            "src/formatters/pretty.php"
         ]
     },
     "bin": [
