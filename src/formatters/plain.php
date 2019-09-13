@@ -20,13 +20,12 @@ function formatValue($value)
 function getChanges($node, $parents = [])
 {
     $name = $node['name'] ?? null;
+    $currentParents = $name ? array_merge($parents, [$name]) : $parents;
 
     $children = $node['children'];
     if (!empty($children)) {
-        $newParents = $name ? array_merge($parents, [$name]) : $parents;
-
-        $results = array_map(function ($child) use ($newParents) {
-            return getChanges($child, $newParents);
+        $results = array_map(function ($child) use ($currentParents) {
+            return getChanges($child, $currentParents);
         }, $children);
         return array_merge(...$results);
     }
@@ -34,7 +33,7 @@ function getChanges($node, $parents = [])
     switch ($node['type']) {
         case TYPE_PROPERTY:
             $value = $node['value'];
-            $path = implode('.', array_merge($parents, [$name]));
+            $path = implode('.', $currentParents);
             switch ($node['state']) {
                 case ADDED:
                     $formattedValue = formatValue($value);
