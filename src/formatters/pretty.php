@@ -61,7 +61,7 @@ function format($diff)
     $json = traverse($diff);
 
     $jsonText = json_encode($json, JSON_PRETTY_PRINT);
-    $jsonTextWithoutQuotes = preg_replace('/"(.+?)"/', '$1', $jsonText);
+    $jsonTextWithoutQuotes = preg_replace('/"(.*?)"/', '$1', $jsonText);
     $jsonTextWithoutQuotesAndCommas = preg_replace('/,$/m', '', $jsonTextWithoutQuotes);
     $diffText = str_replace(
         [
