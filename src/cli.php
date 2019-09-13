@@ -25,6 +25,7 @@ DOC;
 
     $firstFilePath = $args['<firstFile>'];
     $secondFilePath = $args['<secondFile>'];
+    $format = $args['--format'];
 
-    echo genDiffForFiles($firstFilePath, $secondFilePath) . PHP_EOL;
+    echo genDiffForFiles($firstFilePath, $secondFilePath, $format) . PHP_EOL;
 }

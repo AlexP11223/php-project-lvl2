@@ -22,6 +22,7 @@
             "src/diff.php",
             "src/parsers.php",
             "src/utils.php",
+            "src/formatters/formatters.php",
             "src/formatters/pretty.php"
         ]
     },

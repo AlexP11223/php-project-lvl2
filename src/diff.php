@@ -2,7 +2,7 @@
 
 namespace Differ;
 
-use function Differ\formatters\pretty\format;
+use function Differ\formatters\format;
 use function Differ\parsers\load;
 use function Differ\utils\get_object_keys;
 
@@ -68,13 +68,13 @@ function diff($firstObj, $secondObj)
     );
 }
 
-function genDiff($firstObj, $secondObj)
+function genDiff($firstObj, $secondObj, $format = 'pretty')
 {
     $diff = diff($firstObj, $secondObj);
-    return format($diff);
+    return format($diff, $format);
 }
 
-function genDiffForFiles($firstFilePath, $secondFilePath): string
+function genDiffForFiles($firstFilePath, $secondFilePath, $format = 'pretty'): string
 {
-    return genDiff(load($firstFilePath), load($secondFilePath));
+    return genDiff(load($firstFilePath), load($secondFilePath), $format);
 }
