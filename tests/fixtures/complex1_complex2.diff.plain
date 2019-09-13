@@ -1,5 +1,7 @@
 Removed property 'common.setting2' with value '200'
 Removed property 'common.setting6' with value '<complex value>'
+Changed property 'common.setting42.we.need.to.go.deeper' from 'true' to 'false'
+Added property 'common.setting42.we.dont' with value 'true'
 Added property 'common.setting4' with value 'blah blah'
 Added property 'common.setting5' with value '<complex value>'
 Changed property 'group1.baz' from 'bas' to 'bars'

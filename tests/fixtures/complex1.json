@@ -5,6 +5,17 @@
     "setting3": true,
     "setting6": {
       "key": "value"
+    },
+    "setting42": {
+      "we": {
+        "need": {
+          "to": {
+            "go": {
+              "deeper": true
+            }
+          }
+        }
+      }
     }
   },
   "group1": {

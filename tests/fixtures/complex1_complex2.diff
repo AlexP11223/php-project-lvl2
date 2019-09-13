@@ -6,6 +6,19 @@
       - setting6: {
             key: value
         }
+        setting42: {
+            we: {
+                need: {
+                    to: {
+                        go: {
+                          - deeper: true
+                          + deeper: false
+                        }
+                    }
+                }
+              + dont: true
+            }
+        }
       + setting4: blah blah
       + setting5: {
             key5: value5
