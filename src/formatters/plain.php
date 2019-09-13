@@ -17,31 +17,36 @@ function formatValue($value)
     return $strWithoutQuotes;
 }
 
-function getChanges($node)
+function getChanges($node, $parents = [])
 {
+    $name = $node['name'] ?? null;
+
     $children = $node['children'];
     if (!empty($children)) {
-        $results = array_map(function ($child) {
-            return getChanges($child);
+        $newParents = $name ? array_merge($parents, [$name]) : $parents;
+
+        $results = array_map(function ($child) use ($newParents) {
+            return getChanges($child, $newParents);
         }, $children);
         return array_merge(...$results);
     }
 
     switch ($node['type']) {
         case TYPE_PROPERTY:
-            ['name' => $name, 'value' => $value] = $node;
+            $value = $node['value'];
+            $path = implode('.', array_merge($parents, [$name]));
             switch ($node['state']) {
                 case ADDED:
                     $formattedValue = formatValue($value);
-                    return ["Added property '$name' with value '$formattedValue'"];
+                    return ["Added property '$path' with value '$formattedValue'"];
                 case REMOVED:
                     $formattedValue = formatValue($value);
-                    return ["Removed property '$name' with value '$formattedValue'"];
+                    return ["Removed property '$path' with value '$formattedValue'"];
                 case CHANGED:
                     [$old, $new] = $value;
                     $formattedOld = formatValue($old);
                     $formattedNew = formatValue($new);
-                    return ["Changed property '$name' from '$formattedOld' to '$formattedNew'"];
+                    return ["Changed property '$path' from '$formattedOld' to '$formattedNew'"];
             }
     }
 

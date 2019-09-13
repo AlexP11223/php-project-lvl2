@@ -48,5 +48,6 @@ class DiffTest extends TestCase
     public function testPlain()
     {
         self::checkDiff('basic1.json', 'basic2.json', 'basic1_basic2.diff.plain', 'plain');
+        self::checkDiff('complex1.json', 'complex2.json', 'complex1_complex2.diff.plain', 'plain');
     }
 }
