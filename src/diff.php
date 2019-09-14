@@ -22,7 +22,7 @@ function makeNode($objectType, $state, $oldValue, $newValue, $children = [], $fi
         'state' => $state,
         'oldValue' => $oldValue,
         'newValue' => $newValue,
-        'children' => $children
+        'children' => array_values($children)
     ], $fields);
 }
 
