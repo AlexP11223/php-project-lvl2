@@ -5,6 +5,7 @@ namespace Differ\formatters\plain;
 use const Differ\ADDED;
 use const Differ\REMOVED;
 use const Differ\CHANGED;
+use const Differ\NESTED_CHANGED;
 use const Differ\TYPE_PROPERTY;
 
 function formatValue($value)
@@ -22,11 +23,10 @@ function getChanges($node, $parents = [])
     $name = $node['name'] ?? null;
     $currentParents = $name ? array_merge($parents, [$name]) : $parents;
 
-    $children = $node['children'];
-    if (!empty($children)) {
+    if ($node['state'] === NESTED_CHANGED) {
         $results = array_map(function ($child) use ($currentParents) {
             return getChanges($child, $currentParents);
-        }, $children);
+        }, $node['children']);
         return array_merge(...$results);
     }
 

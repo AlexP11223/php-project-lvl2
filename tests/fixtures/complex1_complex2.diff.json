@@ -1,6 +1,6 @@
 {
     "type": "object",
-    "state": "changed",
+    "state": "nested_changed",
     "oldValue": {
         "common": {
             "setting1": "Value 1",
@@ -61,7 +61,7 @@
     "children": [
         {
             "type": "property",
-            "state": "changed",
+            "state": "nested_changed",
             "oldValue": {
                 "setting1": "Value 1",
                 "setting2": "200",
@@ -104,7 +104,7 @@
             "children": [
                 {
                     "type": "object",
-                    "state": "changed",
+                    "state": "nested_changed",
                     "oldValue": {
                         "setting1": "Value 1",
                         "setting2": "200",
@@ -181,7 +181,7 @@
                         },
                         {
                             "type": "property",
-                            "state": "changed",
+                            "state": "nested_changed",
                             "oldValue": {
                                 "we": {
                                     "need": {
@@ -208,7 +208,7 @@
                             "children": [
                                 {
                                     "type": "object",
-                                    "state": "changed",
+                                    "state": "nested_changed",
                                     "oldValue": {
                                         "we": {
                                             "need": {
@@ -235,7 +235,7 @@
                                     "children": [
                                         {
                                             "type": "property",
-                                            "state": "changed",
+                                            "state": "nested_changed",
                                             "oldValue": {
                                                 "need": {
                                                     "to": {
@@ -258,7 +258,7 @@
                                             "children": [
                                                 {
                                                     "type": "object",
-                                                    "state": "changed",
+                                                    "state": "nested_changed",
                                                     "oldValue": {
                                                         "need": {
                                                             "to": {
@@ -281,7 +281,7 @@
                                                     "children": [
                                                         {
                                                             "type": "property",
-                                                            "state": "changed",
+                                                            "state": "nested_changed",
                                                             "oldValue": {
                                                                 "to": {
                                                                     "go": {
@@ -299,7 +299,7 @@
                                                             "children": [
                                                                 {
                                                                     "type": "object",
-                                                                    "state": "changed",
+                                                                    "state": "nested_changed",
                                                                     "oldValue": {
                                                                         "to": {
                                                                             "go": {
@@ -317,7 +317,7 @@
                                                                     "children": [
                                                                         {
                                                                             "type": "property",
-                                                                            "state": "changed",
+                                                                            "state": "nested_changed",
                                                                             "oldValue": {
                                                                                 "go": {
                                                                                     "deeper": true
@@ -331,7 +331,7 @@
                                                                             "children": [
                                                                                 {
                                                                                     "type": "object",
-                                                                                    "state": "changed",
+                                                                                    "state": "nested_changed",
                                                                                     "oldValue": {
                                                                                         "go": {
                                                                                             "deeper": true
@@ -345,7 +345,7 @@
                                                                                     "children": [
                                                                                         {
                                                                                             "type": "property",
-                                                                                            "state": "changed",
+                                                                                            "state": "nested_changed",
                                                                                             "oldValue": {
                                                                                                 "deeper": true
                                                                                             },
@@ -355,7 +355,7 @@
                                                                                             "children": [
                                                                                                 {
                                                                                                     "type": "object",
-                                                                                                    "state": "changed",
+                                                                                                    "state": "nested_changed",
                                                                                                     "oldValue": {
                                                                                                         "deeper": true
                                                                                                     },
@@ -429,7 +429,7 @@
         },
         {
             "type": "property",
-            "state": "changed",
+            "state": "nested_changed",
             "oldValue": {
                 "baz": "bas",
                 "foo": "bar"
@@ -441,7 +441,7 @@
             "children": [
                 {
                     "type": "object",
-                    "state": "changed",
+                    "state": "nested_changed",
                     "oldValue": {
                         "baz": "bas",
                         "foo": "bar"

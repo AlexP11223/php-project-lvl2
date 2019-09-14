@@ -3,6 +3,7 @@
 namespace Differ\formatters\pretty;
 
 use const Differ\ADDED;
+use const Differ\NESTED_CHANGED;
 use const Differ\REMOVED;
 use const Differ\CHANGED;
 use const Differ\UNCHANGED;
@@ -24,7 +25,7 @@ function traverse($node)
             switch ($node['state']) {
                 case UNCHANGED:
                     return $node['oldValue'];
-                case CHANGED:
+                case NESTED_CHANGED:
                     $properties =  array_merge(...array_map(function ($property) {
                         return traverse($property);
                     }, $node['children']));
@@ -33,25 +34,19 @@ function traverse($node)
             throw new \Exception("Unsupported OBJECT state ${node['state']}");
         case TYPE_PROPERTY:
             $name = $node['name'];
-            $isPrimitive = empty($node['children']);
             switch ($node['state']) {
                 case UNCHANGED:
                     return [$name => $node['oldValue']];
                 case ADDED:
-                    return [stateToName($node['state']) . $name => traverse(
-                        $isPrimitive ? $node['newValue'] : $node['children'][0]
-                    )];
+                    return [stateToName($node['state']) . $name => $node['newValue']];
                 case REMOVED:
-                    return [stateToName($node['state']) . $name => traverse(
-                        $isPrimitive ? $node['oldValue'] : $node['children'][0]
-                    )];
+                    return [stateToName($node['state']) . $name => $node['oldValue']];
                 case CHANGED:
-                    if ($isPrimitive) {
-                        return [
-                            stateToName(REMOVED) . $name => $node['oldValue'],
-                            stateToName(ADDED) . $name => $node['newValue']
-                        ];
-                    }
+                    return [
+                        stateToName(REMOVED) . $name => $node['oldValue'],
+                        stateToName(ADDED) . $name => $node['newValue']
+                    ];
+                case NESTED_CHANGED:
                     return [$name => traverse($node['children'][0])];
             }
             throw new \Exception("Unsupported PROPERTY state ${node['state']}");

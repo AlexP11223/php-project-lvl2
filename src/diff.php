@@ -9,6 +9,7 @@ use function Differ\utils\get_object_keys;
 const ADDED = 'added';
 const REMOVED = 'removed';
 const CHANGED = 'changed';
+const NESTED_CHANGED = 'nested_changed';
 const UNCHANGED = 'unchanged';
 
 const TYPE_OBJECT = 'object';
@@ -51,9 +52,9 @@ function diff($firstObj, $secondObj)
             $old = $firstObj->$key;
             $new = $secondObj->$key;
             if (is_object($old) && is_object($new)) {
-                return makePropertyNode(CHANGED, $key, $old, $new, [diff($old, $new)]);
+                return makePropertyNode(NESTED_CHANGED, $key, $old, $new, [diff($old, $new)]);
             }
-            return makePropertyNode(CHANGED, $key, $old, $new, []);
+            return makePropertyNode(CHANGED, $key, $old, $new);
         }
         return makePropertyNode(UNCHANGED, $key, $firstObj->$key, $firstObj->$key);
     }, $keys);
@@ -63,7 +64,7 @@ function diff($firstObj, $secondObj)
     }));
 
     return makeObjectNode(
-        $isUnchanged ? UNCHANGED : CHANGED,
+        $isUnchanged ? UNCHANGED : NESTED_CHANGED,
         $firstObj,
         $secondObj,
         $isUnchanged ? [] : $properties
