@@ -62,7 +62,12 @@ function diff($firstObj, $secondObj)
         return $item['state'] != UNCHANGED;
     }));
 
-    return makeObjectNode($isUnchanged ? UNCHANGED : CHANGED, $firstObj, $secondObj, $properties);
+    return makeObjectNode(
+        $isUnchanged ? UNCHANGED : CHANGED,
+        $firstObj,
+        $secondObj,
+        $isUnchanged ? [] : $properties
+    );
 }
 
 function genDiff($firstObj, $secondObj, $format = 'pretty')
