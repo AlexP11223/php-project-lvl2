@@ -17,9 +17,6 @@ function stateToName($state)
 
 function traverse($node)
 {
-    if (!is_array($node)) {
-        return $node;
-    }
     switch ($node['type']) {
         case TYPE_OBJECT:
             switch ($node['state']) {
