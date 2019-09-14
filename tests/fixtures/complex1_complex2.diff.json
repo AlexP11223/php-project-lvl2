@@ -1,0 +1,496 @@
+{
+    "type": "object",
+    "state": "changed",
+    "oldValue": {
+        "common": {
+            "setting1": "Value 1",
+            "setting2": "200",
+            "setting3": true,
+            "setting6": {
+                "key": "value"
+            },
+            "setting42": {
+                "we": {
+                    "need": {
+                        "to": {
+                            "go": {
+                                "deeper": true
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "group1": {
+            "baz": "bas",
+            "foo": "bar"
+        },
+        "group2": {
+            "abc": "12345"
+        }
+    },
+    "newValue": {
+        "common": {
+            "setting1": "Value 1",
+            "setting3": true,
+            "setting4": "blah blah",
+            "setting5": {
+                "key5": "value5"
+            },
+            "setting42": {
+                "we": {
+                    "dont": true,
+                    "need": {
+                        "to": {
+                            "go": {
+                                "deeper": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "group1": {
+            "foo": "bar",
+            "baz": "bars"
+        },
+        "group3": {
+            "fee": "100500"
+        }
+    },
+    "children": [
+        {
+            "type": "property",
+            "state": "changed",
+            "oldValue": {
+                "setting1": "Value 1",
+                "setting2": "200",
+                "setting3": true,
+                "setting6": {
+                    "key": "value"
+                },
+                "setting42": {
+                    "we": {
+                        "need": {
+                            "to": {
+                                "go": {
+                                    "deeper": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "newValue": {
+                "setting1": "Value 1",
+                "setting3": true,
+                "setting4": "blah blah",
+                "setting5": {
+                    "key5": "value5"
+                },
+                "setting42": {
+                    "we": {
+                        "dont": true,
+                        "need": {
+                            "to": {
+                                "go": {
+                                    "deeper": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "children": [
+                {
+                    "type": "object",
+                    "state": "changed",
+                    "oldValue": {
+                        "setting1": "Value 1",
+                        "setting2": "200",
+                        "setting3": true,
+                        "setting6": {
+                            "key": "value"
+                        },
+                        "setting42": {
+                            "we": {
+                                "need": {
+                                    "to": {
+                                        "go": {
+                                            "deeper": true
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "newValue": {
+                        "setting1": "Value 1",
+                        "setting3": true,
+                        "setting4": "blah blah",
+                        "setting5": {
+                            "key5": "value5"
+                        },
+                        "setting42": {
+                            "we": {
+                                "dont": true,
+                                "need": {
+                                    "to": {
+                                        "go": {
+                                            "deeper": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "children": [
+                        {
+                            "type": "property",
+                            "state": "unchanged",
+                            "oldValue": "Value 1",
+                            "newValue": "Value 1",
+                            "children": [],
+                            "name": "setting1"
+                        },
+                        {
+                            "type": "property",
+                            "state": "removed",
+                            "oldValue": "200",
+                            "newValue": null,
+                            "children": [],
+                            "name": "setting2"
+                        },
+                        {
+                            "type": "property",
+                            "state": "unchanged",
+                            "oldValue": true,
+                            "newValue": true,
+                            "children": [],
+                            "name": "setting3"
+                        },
+                        {
+                            "type": "property",
+                            "state": "removed",
+                            "oldValue": {
+                                "key": "value"
+                            },
+                            "newValue": null,
+                            "children": [],
+                            "name": "setting6"
+                        },
+                        {
+                            "type": "property",
+                            "state": "changed",
+                            "oldValue": {
+                                "we": {
+                                    "need": {
+                                        "to": {
+                                            "go": {
+                                                "deeper": true
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "newValue": {
+                                "we": {
+                                    "dont": true,
+                                    "need": {
+                                        "to": {
+                                            "go": {
+                                                "deeper": false
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "children": [
+                                {
+                                    "type": "object",
+                                    "state": "changed",
+                                    "oldValue": {
+                                        "we": {
+                                            "need": {
+                                                "to": {
+                                                    "go": {
+                                                        "deeper": true
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "newValue": {
+                                        "we": {
+                                            "dont": true,
+                                            "need": {
+                                                "to": {
+                                                    "go": {
+                                                        "deeper": false
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "children": [
+                                        {
+                                            "type": "property",
+                                            "state": "changed",
+                                            "oldValue": {
+                                                "need": {
+                                                    "to": {
+                                                        "go": {
+                                                            "deeper": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "newValue": {
+                                                "dont": true,
+                                                "need": {
+                                                    "to": {
+                                                        "go": {
+                                                            "deeper": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "children": [
+                                                {
+                                                    "type": "object",
+                                                    "state": "changed",
+                                                    "oldValue": {
+                                                        "need": {
+                                                            "to": {
+                                                                "go": {
+                                                                    "deeper": true
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "newValue": {
+                                                        "dont": true,
+                                                        "need": {
+                                                            "to": {
+                                                                "go": {
+                                                                    "deeper": false
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    "children": [
+                                                        {
+                                                            "type": "property",
+                                                            "state": "changed",
+                                                            "oldValue": {
+                                                                "to": {
+                                                                    "go": {
+                                                                        "deeper": true
+                                                                    }
+                                                                }
+                                                            },
+                                                            "newValue": {
+                                                                "to": {
+                                                                    "go": {
+                                                                        "deeper": false
+                                                                    }
+                                                                }
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "type": "object",
+                                                                    "state": "changed",
+                                                                    "oldValue": {
+                                                                        "to": {
+                                                                            "go": {
+                                                                                "deeper": true
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "newValue": {
+                                                                        "to": {
+                                                                            "go": {
+                                                                                "deeper": false
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "children": [
+                                                                        {
+                                                                            "type": "property",
+                                                                            "state": "changed",
+                                                                            "oldValue": {
+                                                                                "go": {
+                                                                                    "deeper": true
+                                                                                }
+                                                                            },
+                                                                            "newValue": {
+                                                                                "go": {
+                                                                                    "deeper": false
+                                                                                }
+                                                                            },
+                                                                            "children": [
+                                                                                {
+                                                                                    "type": "object",
+                                                                                    "state": "changed",
+                                                                                    "oldValue": {
+                                                                                        "go": {
+                                                                                            "deeper": true
+                                                                                        }
+                                                                                    },
+                                                                                    "newValue": {
+                                                                                        "go": {
+                                                                                            "deeper": false
+                                                                                        }
+                                                                                    },
+                                                                                    "children": [
+                                                                                        {
+                                                                                            "type": "property",
+                                                                                            "state": "changed",
+                                                                                            "oldValue": {
+                                                                                                "deeper": true
+                                                                                            },
+                                                                                            "newValue": {
+                                                                                                "deeper": false
+                                                                                            },
+                                                                                            "children": [
+                                                                                                {
+                                                                                                    "type": "object",
+                                                                                                    "state": "changed",
+                                                                                                    "oldValue": {
+                                                                                                        "deeper": true
+                                                                                                    },
+                                                                                                    "newValue": {
+                                                                                                        "deeper": false
+                                                                                                    },
+                                                                                                    "children": [
+                                                                                                        {
+                                                                                                            "type": "property",
+                                                                                                            "state": "changed",
+                                                                                                            "oldValue": true,
+                                                                                                            "newValue": false,
+                                                                                                            "children": [],
+                                                                                                            "name": "deeper"
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ],
+                                                                                            "name": "go"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ],
+                                                                            "name": "to"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            "name": "need"
+                                                        },
+                                                        {
+                                                            "type": "property",
+                                                            "state": "added",
+                                                            "oldValue": null,
+                                                            "newValue": true,
+                                                            "children": [],
+                                                            "name": "dont"
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "name": "we"
+                                        }
+                                    ]
+                                }
+                            ],
+                            "name": "setting42"
+                        },
+                        {
+                            "type": "property",
+                            "state": "added",
+                            "oldValue": null,
+                            "newValue": "blah blah",
+                            "children": [],
+                            "name": "setting4"
+                        },
+                        {
+                            "type": "property",
+                            "state": "added",
+                            "oldValue": null,
+                            "newValue": {
+                                "key5": "value5"
+                            },
+                            "children": [],
+                            "name": "setting5"
+                        }
+                    ]
+                }
+            ],
+            "name": "common"
+        },
+        {
+            "type": "property",
+            "state": "changed",
+            "oldValue": {
+                "baz": "bas",
+                "foo": "bar"
+            },
+            "newValue": {
+                "foo": "bar",
+                "baz": "bars"
+            },
+            "children": [
+                {
+                    "type": "object",
+                    "state": "changed",
+                    "oldValue": {
+                        "baz": "bas",
+                        "foo": "bar"
+                    },
+                    "newValue": {
+                        "foo": "bar",
+                        "baz": "bars"
+                    },
+                    "children": [
+                        {
+                            "type": "property",
+                            "state": "changed",
+                            "oldValue": "bas",
+                            "newValue": "bars",
+                            "children": [],
+                            "name": "baz"
+                        },
+                        {
+                            "type": "property",
+                            "state": "unchanged",
+                            "oldValue": "bar",
+                            "newValue": "bar",
+                            "children": [],
+                            "name": "foo"
+                        }
+                    ]
+                }
+            ],
+            "name": "group1"
+        },
+        {
+            "type": "property",
+            "state": "removed",
+            "oldValue": {
+                "abc": "12345"
+            },
+            "newValue": null,
+            "children": [],
+            "name": "group2"
+        },
+        {
+            "type": "property",
+            "state": "added",
+            "oldValue": null,
+            "newValue": {
+                "fee": "100500"
+            },
+            "children": [],
+            "name": "group3"
+        }
+    ]
+}

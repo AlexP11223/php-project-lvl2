@@ -50,4 +50,9 @@ class DiffTest extends TestCase
         self::checkDiff('basic1.json', 'basic2.json', 'basic1_basic2.diff.plain', 'plain');
         self::checkDiff('complex1.json', 'complex2.json', 'complex1_complex2.diff.plain', 'plain');
     }
+
+    public function testJson()
+    {
+        self::checkDiff('complex1.json', 'complex2.json', 'complex1_complex2.diff.json', 'json');
+    }
 }

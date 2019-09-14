@@ -24,7 +24,8 @@
             "src/utils.php",
             "src/formatters/formatters.php",
             "src/formatters/pretty.php",
-            "src/formatters/plain.php"
+            "src/formatters/plain.php",
+            "src/formatters/json.php"
         ]
     },
     "bin": [

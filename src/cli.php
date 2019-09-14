@@ -17,7 +17,7 @@ Usage:
 Options:
   -h --help                     Show this screen
   -v --version                  Show version
-  --format <fmt>                Report format (pretty/plain) [default: pretty]
+  --format <fmt>                Report format (pretty/plain/json) [default: pretty]
 
 DOC;
 
