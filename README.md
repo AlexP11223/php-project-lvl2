@@ -4,6 +4,7 @@
 
 # gendiff
 
+Compares two JSON, YAML files and shows the changes between them in different formats: `pretty`, `plain`, `json`. 
 
 ## Installation
 
@@ -14,3 +15,41 @@
 [![asciicast](https://asciinema.org/a/9qTbJk0qjlNH8fAXwii5nhB9Z.svg)](https://asciinema.org/a/9qTbJk0qjlNH8fAXwii5nhB9Z)
 
 ## Usage
+
+```
+gendiff [--format <fmt>] <firstFile> <secondFile>
+```
+
+Examples:
+
+```
+gendiff before.json after.json
+gendiff before.yaml after.yaml
+gendiff before.json after.yaml
+gendiff before.json after.json --format plain
+gendiff before.json after.json --format json
+```
+
+### pretty
+
+Human-readable JSON-like format similar to `diff`.
+
+Flat files:
+
+[![asciicast](https://asciinema.org/a/w1GQYjwBYf8Rw1rCTxosWHG7a.svg)](https://asciinema.org/a/w1GQYjwBYf8Rw1rCTxosWHG7a)
+
+Nested objects:
+
+[![asciicast](https://asciinema.org/a/cIOkMEdDKqhijQ6f0WuoAWNS0.svg)](https://asciinema.org/a/cIOkMEdDKqhijQ6f0WuoAWNS0)
+
+### plain
+
+Textual description of the changes.
+
+[![asciicast](https://asciinema.org/a/jG4WCuuqGt4TEBaFOikZWb5e9.svg)](https://asciinema.org/a/jG4WCuuqGt4TEBaFOikZWb5e9)
+
+### json
+
+JSON tree describing the changes, intended for automated processing.
+
+ [![asciicast](https://asciinema.org/a/WsoXeiMW6AGnaS7cgNfVua4ZG.svg)](https://asciinema.org/a/WsoXeiMW6AGnaS7cgNfVua4ZG)
