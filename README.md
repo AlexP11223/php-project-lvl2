@@ -4,4 +4,13 @@
 
 # gendiff
 
-[![asciicast](https://asciinema.org/a/l4zcvNJycAmIUV6um04F6Cklm.svg)](https://asciinema.org/a/l4zcvNJycAmIUV6um04F6Cklm)
+
+## Installation
+
+- Install PHP 7.2+ and [Composer](https://getcomposer.org/doc/00-intro.md#globally).
+- Run `composer global require alexp11223/gendiff`.
+- Make sure that the Composer global bin dir (`composer global config bin-dir --absolute`) is in your `PATH`.
+
+[![asciicast](https://asciinema.org/a/9qTbJk0qjlNH8fAXwii5nhB9Z.svg)](https://asciinema.org/a/9qTbJk0qjlNH8fAXwii5nhB9Z)
+
+## Usage
