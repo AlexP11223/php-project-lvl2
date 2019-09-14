@@ -59,16 +59,13 @@ function diff($firstObj, $secondObj)
         return makePropertyNode(UNCHANGED, $key, $firstObj->$key, $firstObj->$key);
     }, $keys);
 
-    $isUnchanged = empty(array_filter($properties, function ($item) {
+    $hasChanges = !empty(array_filter($properties, function ($item) {
         return $item['state'] != UNCHANGED;
     }));
-
-    return makeObjectNode(
-        $isUnchanged ? UNCHANGED : NESTED_CHANGED,
-        $firstObj,
-        $secondObj,
-        $isUnchanged ? [] : $properties
-    );
+    if ($hasChanges) {
+        return makeObjectNode(NESTED_CHANGED, $firstObj, $secondObj, $properties);
+    }
+    return makeObjectNode(UNCHANGED, $firstObj, $secondObj);
 }
 
 function genDiff($firstObj, $secondObj, $format = 'pretty')
