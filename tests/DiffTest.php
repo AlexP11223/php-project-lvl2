@@ -1,8 +1,9 @@
 <?php
 
-namespace Differ;
+namespace Differ\Tests;
 
 use PHPUnit\Framework\TestCase;
+use function Differ\genDiffForFiles;
 
 class DiffTest extends TestCase
 {
