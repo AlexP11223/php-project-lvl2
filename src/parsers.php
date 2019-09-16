@@ -14,17 +14,15 @@ function parseYaml($text)
     return Yaml::parse($text, Yaml::PARSE_OBJECT_FOR_MAP);
 }
 
-function load($filePath)
+function parse($content, $format)
 {
-    $ext = pathinfo($filePath, PATHINFO_EXTENSION);
-    $content = file_get_contents($filePath);
-    switch ($ext) {
+    switch ($format) {
         case 'json':
             return parseJson($content);
         case 'yaml':
         case 'yml':
             return parseYaml($content);
         default:
-            throw new \Exception("Unknown type $ext");
+            throw new \Exception("Unknown format $format");
     }
 }

@@ -3,7 +3,7 @@
 namespace Differ;
 
 use function Differ\formatters\format;
-use function Differ\parsers\load;
+use function Differ\parsers\parse;
 use function Differ\utils\get_object_keys;
 
 const ADDED = 'added';
@@ -72,6 +72,12 @@ function genDiff($firstObj, $secondObj, $format = 'pretty')
 {
     $diffTree = makeDiffTree($firstObj, $secondObj);
     return format($diffTree, $format);
+}
+
+function load($filePath)
+{
+    $content = file_get_contents($filePath);
+    return parse($content, pathinfo($filePath, PATHINFO_EXTENSION));
 }
 
 function genDiffForFiles($firstFilePath, $secondFilePath, $format = 'pretty'): string
