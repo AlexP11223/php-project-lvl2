@@ -1,4 +1,8 @@
 {
+    host: hexlet.io
+  - timeout: 50
+  + timeout: 20
+  - proxy: 123.234.53.22
     common: {
         setting1: Value 1
       - setting2: 200
@@ -32,6 +36,8 @@
   - group2: {
         abc: 12345
     }
+  + verbose: true
+  + empty: 
   + group3: {
         fee: 100500
     }

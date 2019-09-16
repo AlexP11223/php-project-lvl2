@@ -2,6 +2,9 @@
     "type": "object",
     "state": "nested_changed",
     "oldValue": {
+        "host": "hexlet.io",
+        "timeout": 50,
+        "proxy": "123.234.53.22",
         "common": {
             "setting1": "Value 1",
             "setting2": "200",
@@ -30,6 +33,10 @@
         }
     },
     "newValue": {
+        "timeout": 20,
+        "verbose": true,
+        "host": "hexlet.io",
+        "empty": "",
         "common": {
             "setting1": "Value 1",
             "setting3": true,
@@ -59,6 +66,30 @@
         }
     },
     "children": [
+        {
+            "type": "property",
+            "state": "unchanged",
+            "oldValue": "hexlet.io",
+            "newValue": "hexlet.io",
+            "children": [],
+            "name": "host"
+        },
+        {
+            "type": "property",
+            "state": "changed",
+            "oldValue": 50,
+            "newValue": 20,
+            "children": [],
+            "name": "timeout"
+        },
+        {
+            "type": "property",
+            "state": "removed",
+            "oldValue": "123.234.53.22",
+            "newValue": null,
+            "children": [],
+            "name": "proxy"
+        },
         {
             "type": "property",
             "state": "nested_changed",
@@ -481,6 +512,22 @@
             "newValue": null,
             "children": [],
             "name": "group2"
+        },
+        {
+            "type": "property",
+            "state": "added",
+            "oldValue": null,
+            "newValue": true,
+            "children": [],
+            "name": "verbose"
+        },
+        {
+            "type": "property",
+            "state": "added",
+            "oldValue": null,
+            "newValue": "",
+            "children": [],
+            "name": "empty"
         },
         {
             "type": "property",

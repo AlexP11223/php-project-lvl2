@@ -12,48 +12,40 @@ class DiffTest extends TestCase
         return dirname(__FILE__) . '/fixtures/' . $relativeFilePath;
     }
 
-    private static function checkDiff($filePath1, $filePath2, $expectedDiffFilePath, $format = 'pretty')
+    private static function checkDiff($filePath1, $filePath2, $expectedDiffFilePath)
     {
+        $format = pathinfo($expectedDiffFilePath, PATHINFO_EXTENSION);
         $expectedDiff = trim(file_get_contents(self::getFixtureFilePath($expectedDiffFilePath)));
         $diff = genDiffForFiles(self::getFixtureFilePath($filePath1), self::getFixtureFilePath($filePath2), $format);
         self::assertEquals($expectedDiff, $diff);
     }
-
-    public function testBasicJson()
+    /**
+     * @dataProvider diffProvider
+     */
+    public function testDiff($fileType, $outputFormat)
     {
-        self::checkDiff('basic1.json', 'basic2.json', 'basic1_basic2.diff');
-        self::checkDiff('basic2.json', 'basic1.json', 'basic2_basic1.diff');
+        self::checkDiff("before.$fileType", "after.$fileType", "before_after.diff.$outputFormat");
     }
 
-    public function testComplexJson()
+    public function diffProvider()
     {
-        self::checkDiff('complex1.json', 'complex2.json', 'complex1_complex2.diff');
-    }
-
-    public function testBasicYaml()
-    {
-        self::checkDiff('basic1.yaml', 'basic2.yaml', 'basic1_basic2.diff');
-        self::checkDiff('basic2.yaml', 'basic1.yaml', 'basic2_basic1.diff');
-    }
-
-    public function testComplexYaml()
-    {
-        self::checkDiff('complex1.yaml', 'complex2.json', 'complex1_complex2.diff');
+        return [
+            ['json', 'pretty'],
+            ['json', 'plain'],
+            ['json', 'json'],
+            ['yaml', 'pretty'],
+            ['yaml', 'plain'],
+            ['yaml', 'json'],
+        ];
     }
 
     public function testSame()
     {
-        self::checkDiff('basic1.json', 'basic1.json', 'basic1_basic1.diff');
+        self::checkDiff("before.json", "before.json", "before_before.diff.pretty");
     }
 
-    public function testPlain()
+    public function testDiffDifferentFileTypes()
     {
-        self::checkDiff('basic1.json', 'basic2.json', 'basic1_basic2.diff.plain', 'plain');
-        self::checkDiff('complex1.json', 'complex2.json', 'complex1_complex2.diff.plain', 'plain');
-    }
-
-    public function testJson()
-    {
-        self::checkDiff('complex1.json', 'complex2.json', 'complex1_complex2.diff.json', 'json');
+        self::checkDiff("before.json", "after.yaml", "before_after.diff.pretty");
     }
 }

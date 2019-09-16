@@ -1,4 +1,0 @@
-Changed property 'timeout' from '50' to '20'
-Removed property 'proxy' with value '123.234.53.22'
-Added property 'verbose' with value 'true'
-Added property 'empty' with value ''
