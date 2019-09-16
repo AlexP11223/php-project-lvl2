@@ -50,9 +50,9 @@ function getChanges($node, $parents = [])
     return [];
 }
 
-function format($diff)
+function format($diffTree)
 {
-    $changes = getChanges($diff);
+    $changes = getChanges($diffTree);
 
     return implode(PHP_EOL, $changes);
 }

@@ -6,15 +6,15 @@ use function Differ\formatters\pretty\format as prettyFormat;
 use function Differ\formatters\plain\format as plainFormat;
 use function Differ\formatters\json\format as jsonFormat;
 
-function format($diff, $format = 'pretty')
+function format($diffTree, $format = 'pretty')
 {
     switch ($format) {
         case 'pretty':
-            return prettyFormat($diff);
+            return prettyFormat($diffTree);
         case 'plain':
-            return plainFormat($diff);
+            return plainFormat($diffTree);
         case 'json':
-            return jsonFormat($diff);
+            return jsonFormat($diffTree);
         default:
             throw new \Exception("Unknown format '$format'");
     }

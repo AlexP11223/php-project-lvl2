@@ -51,9 +51,9 @@ function traverse($node)
     throw new \Exception("Unsupported type ${node['type']}");
 }
 
-function format($diff)
+function format($diffTree)
 {
-    $json = traverse($diff);
+    $json = traverse($diffTree);
 
     $jsonText = json_encode($json, JSON_PRETTY_PRINT);
     $jsonTextWithoutQuotes = preg_replace('/"(.*?)"/', '$1', $jsonText);

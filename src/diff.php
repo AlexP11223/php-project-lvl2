@@ -37,7 +37,7 @@ function makePropertyNode($state, $name, $oldValue, $newValue, $children = [])
     return makeNode(TYPE_PROPERTY, $state, $oldValue, $newValue, $children, ['name' => $name]);
 }
 
-function diff($firstObj, $secondObj)
+function makeDiffTree($firstObj, $secondObj)
 {
     $keys = array_unique(array_merge(get_object_keys($firstObj), get_object_keys($secondObj)));
 
@@ -52,7 +52,7 @@ function diff($firstObj, $secondObj)
             $old = $firstObj->$key;
             $new = $secondObj->$key;
             if (is_object($old) && is_object($new)) {
-                return makePropertyNode(NESTED_CHANGED, $key, $old, $new, [diff($old, $new)]);
+                return makePropertyNode(NESTED_CHANGED, $key, $old, $new, [makeDiffTree($old, $new)]);
             }
             return makePropertyNode(CHANGED, $key, $old, $new);
         }
@@ -70,8 +70,8 @@ function diff($firstObj, $secondObj)
 
 function genDiff($firstObj, $secondObj, $format = 'pretty')
 {
-    $diff = diff($firstObj, $secondObj);
-    return format($diff, $format);
+    $diffTree = makeDiffTree($firstObj, $secondObj);
+    return format($diffTree, $format);
 }
 
 function genDiffForFiles($firstFilePath, $secondFilePath, $format = 'pretty'): string
