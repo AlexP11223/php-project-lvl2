@@ -2,6 +2,7 @@
 
 namespace Differ\formatters\plain;
 
+use function Funct\Collection\flatten;
 use const Differ\ADDED;
 use const Differ\REMOVED;
 use const Differ\CHANGED;
@@ -24,10 +25,10 @@ function getChanges($node, $parents = [])
     $currentParents = $name ? array_merge($parents, [$name]) : $parents;
 
     if ($node['state'] === NESTED_CHANGED) {
-        $results = array_map(function ($child) use ($currentParents) {
+        $results = flatten(array_map(function ($child) use ($currentParents) {
             return getChanges($child, $currentParents);
-        }, $node['children']);
-        return array_merge(...$results);
+        }, $node['children']));
+        return array_filter($results);
     }
 
     switch ($node['type']) {
@@ -36,18 +37,18 @@ function getChanges($node, $parents = [])
             switch ($node['state']) {
                 case ADDED:
                     $formattedValue = formatValue($node['newValue']);
-                    return ["Added property '$path' with value '$formattedValue'"];
+                    return "Added property '$path' with value '$formattedValue'";
                 case REMOVED:
                     $formattedValue = formatValue($node['oldValue']);
-                    return ["Removed property '$path' with value '$formattedValue'"];
+                    return "Removed property '$path' with value '$formattedValue'";
                 case CHANGED:
                     $formattedOld = formatValue($node['oldValue']);
                     $formattedNew = formatValue($node['newValue']);
-                    return ["Changed property '$path' from '$formattedOld' to '$formattedNew'"];
+                    return "Changed property '$path' from '$formattedOld' to '$formattedNew'";
             }
     }
 
-    return [];
+    return null;
 }
 
 function format($diffTree)
