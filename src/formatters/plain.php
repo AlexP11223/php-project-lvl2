@@ -23,29 +23,24 @@ function getChanges($node, $parents = [])
 {
     $name = $node['name'] ?? null;
     $currentParents = $name ? array_merge($parents, [$name]) : $parents;
+    $path = implode('.', $currentParents);
 
-    if ($node['state'] === NESTED_CHANGED) {
-        $results = flatten(array_map(function ($child) use ($currentParents) {
-            return getChanges($child, $currentParents);
-        }, $node['children']));
-        return array_filter($results);
-    }
-
-    switch ($node['type']) {
-        case TYPE_PROPERTY:
-            $path = implode('.', $currentParents);
-            switch ($node['state']) {
-                case ADDED:
-                    $formattedValue = formatValue($node['newValue']);
-                    return "Added property '$path' with value '$formattedValue'";
-                case REMOVED:
-                    $formattedValue = formatValue($node['oldValue']);
-                    return "Removed property '$path' with value '$formattedValue'";
-                case CHANGED:
-                    $formattedOld = formatValue($node['oldValue']);
-                    $formattedNew = formatValue($node['newValue']);
-                    return "Changed property '$path' from '$formattedOld' to '$formattedNew'";
-            }
+    switch ($node['state']) {
+        case NESTED_CHANGED:
+            $results = flatten(array_map(function ($child) use ($currentParents) {
+                return getChanges($child, $currentParents);
+            }, $node['children']));
+            return array_filter($results);
+        case ADDED:
+            $formattedValue = formatValue($node['newValue']);
+            return "Added property '$path' with value '$formattedValue'";
+        case REMOVED:
+            $formattedValue = formatValue($node['oldValue']);
+            return "Removed property '$path' with value '$formattedValue'";
+        case CHANGED:
+            $formattedOld = formatValue($node['oldValue']);
+            $formattedNew = formatValue($node['newValue']);
+            return "Changed property '$path' from '$formattedOld' to '$formattedNew'";
     }
 
     return null;
