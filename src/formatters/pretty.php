@@ -7,23 +7,33 @@ use const Differ\NESTED_CHANGED;
 use const Differ\REMOVED;
 use const Differ\CHANGED;
 use const Differ\UNCHANGED;
-use const Differ\TYPE_OBJECT;
-use const Differ\TYPE_PROPERTY;
+
+const TYPE_OBJECT = 'object';
+const TYPE_PROPERTY = 'property';
 
 function stateToName($state)
 {
     return strtoupper("_${state}_");
 }
 
+function getValueType($node)
+{
+    if (isset($node['name'])) {
+        return TYPE_PROPERTY;
+    }
+    return TYPE_OBJECT;
+}
+
 function traverse($node)
 {
-    switch ($node['type']) {
+    $valueType = getValueType($node);
+    switch ($valueType) {
         case TYPE_OBJECT:
             switch ($node['state']) {
                 case UNCHANGED:
                     return $node['oldValue'];
                 case NESTED_CHANGED:
-                    $properties =  array_merge(...array_map(function ($property) {
+                    $properties = array_merge(...array_map(function ($property) {
                         return traverse($property);
                     }, $node['children']));
                     return (object)$properties;

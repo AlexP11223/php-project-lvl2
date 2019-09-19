@@ -1,5 +1,4 @@
 {
-    "type": "object",
     "state": "nested_changed",
     "oldValue": {
         "host": "hexlet.io",
@@ -67,7 +66,6 @@
     },
     "children": [
         {
-            "type": "property",
             "state": "unchanged",
             "oldValue": "hexlet.io",
             "newValue": "hexlet.io",
@@ -75,7 +73,6 @@
             "name": "host"
         },
         {
-            "type": "property",
             "state": "changed",
             "oldValue": 50,
             "newValue": 20,
@@ -83,7 +80,6 @@
             "name": "timeout"
         },
         {
-            "type": "property",
             "state": "removed",
             "oldValue": "123.234.53.22",
             "newValue": null,
@@ -91,7 +87,6 @@
             "name": "proxy"
         },
         {
-            "type": "property",
             "state": "nested_changed",
             "oldValue": {
                 "setting1": "Value 1",
@@ -134,7 +129,6 @@
             },
             "children": [
                 {
-                    "type": "object",
                     "state": "nested_changed",
                     "oldValue": {
                         "setting1": "Value 1",
@@ -177,7 +171,6 @@
                     },
                     "children": [
                         {
-                            "type": "property",
                             "state": "unchanged",
                             "oldValue": "Value 1",
                             "newValue": "Value 1",
@@ -185,7 +178,6 @@
                             "name": "setting1"
                         },
                         {
-                            "type": "property",
                             "state": "removed",
                             "oldValue": "200",
                             "newValue": null,
@@ -193,7 +185,6 @@
                             "name": "setting2"
                         },
                         {
-                            "type": "property",
                             "state": "unchanged",
                             "oldValue": true,
                             "newValue": true,
@@ -201,7 +192,6 @@
                             "name": "setting3"
                         },
                         {
-                            "type": "property",
                             "state": "removed",
                             "oldValue": {
                                 "key": "value"
@@ -211,7 +201,6 @@
                             "name": "setting6"
                         },
                         {
-                            "type": "property",
                             "state": "nested_changed",
                             "oldValue": {
                                 "we": {
@@ -238,7 +227,6 @@
                             },
                             "children": [
                                 {
-                                    "type": "object",
                                     "state": "nested_changed",
                                     "oldValue": {
                                         "we": {
@@ -265,7 +253,6 @@
                                     },
                                     "children": [
                                         {
-                                            "type": "property",
                                             "state": "nested_changed",
                                             "oldValue": {
                                                 "need": {
@@ -288,7 +275,6 @@
                                             },
                                             "children": [
                                                 {
-                                                    "type": "object",
                                                     "state": "nested_changed",
                                                     "oldValue": {
                                                         "need": {
@@ -311,7 +297,6 @@
                                                     },
                                                     "children": [
                                                         {
-                                                            "type": "property",
                                                             "state": "nested_changed",
                                                             "oldValue": {
                                                                 "to": {
@@ -329,7 +314,6 @@
                                                             },
                                                             "children": [
                                                                 {
-                                                                    "type": "object",
                                                                     "state": "nested_changed",
                                                                     "oldValue": {
                                                                         "to": {
@@ -347,7 +331,6 @@
                                                                     },
                                                                     "children": [
                                                                         {
-                                                                            "type": "property",
                                                                             "state": "nested_changed",
                                                                             "oldValue": {
                                                                                 "go": {
@@ -361,7 +344,6 @@
                                                                             },
                                                                             "children": [
                                                                                 {
-                                                                                    "type": "object",
                                                                                     "state": "nested_changed",
                                                                                     "oldValue": {
                                                                                         "go": {
@@ -375,7 +357,6 @@
                                                                                     },
                                                                                     "children": [
                                                                                         {
-                                                                                            "type": "property",
                                                                                             "state": "nested_changed",
                                                                                             "oldValue": {
                                                                                                 "deeper": true
@@ -385,7 +366,6 @@
                                                                                             },
                                                                                             "children": [
                                                                                                 {
-                                                                                                    "type": "object",
                                                                                                     "state": "nested_changed",
                                                                                                     "oldValue": {
                                                                                                         "deeper": true
@@ -395,7 +375,6 @@
                                                                                                     },
                                                                                                     "children": [
                                                                                                         {
-                                                                                                            "type": "property",
                                                                                                             "state": "changed",
                                                                                                             "oldValue": true,
                                                                                                             "newValue": false,
@@ -418,7 +397,6 @@
                                                             "name": "need"
                                                         },
                                                         {
-                                                            "type": "property",
                                                             "state": "added",
                                                             "oldValue": null,
                                                             "newValue": true,
@@ -436,7 +414,6 @@
                             "name": "setting42"
                         },
                         {
-                            "type": "property",
                             "state": "added",
                             "oldValue": null,
                             "newValue": "blah blah",
@@ -444,7 +421,6 @@
                             "name": "setting4"
                         },
                         {
-                            "type": "property",
                             "state": "added",
                             "oldValue": null,
                             "newValue": {
@@ -459,7 +435,6 @@
             "name": "common"
         },
         {
-            "type": "property",
             "state": "nested_changed",
             "oldValue": {
                 "baz": "bas",
@@ -471,7 +446,6 @@
             },
             "children": [
                 {
-                    "type": "object",
                     "state": "nested_changed",
                     "oldValue": {
                         "baz": "bas",
@@ -483,7 +457,6 @@
                     },
                     "children": [
                         {
-                            "type": "property",
                             "state": "changed",
                             "oldValue": "bas",
                             "newValue": "bars",
@@ -491,7 +464,6 @@
                             "name": "baz"
                         },
                         {
-                            "type": "property",
                             "state": "unchanged",
                             "oldValue": "bar",
                             "newValue": "bar",
@@ -504,7 +476,6 @@
             "name": "group1"
         },
         {
-            "type": "property",
             "state": "removed",
             "oldValue": {
                 "abc": "12345"
@@ -514,7 +485,6 @@
             "name": "group2"
         },
         {
-            "type": "property",
             "state": "added",
             "oldValue": null,
             "newValue": true,
@@ -522,7 +492,6 @@
             "name": "verbose"
         },
         {
-            "type": "property",
             "state": "added",
             "oldValue": null,
             "newValue": "",
@@ -530,7 +499,6 @@
             "name": "empty"
         },
         {
-            "type": "property",
             "state": "added",
             "oldValue": null,
             "newValue": {

@@ -12,14 +12,11 @@ const CHANGED = 'changed';
 const NESTED_CHANGED = 'nested_changed';
 const UNCHANGED = 'unchanged';
 
-const TYPE_OBJECT = 'object';
-const TYPE_PROPERTY = 'property';
 // TODO: add array support?
 
-function makeNode($objectType, $state, $oldValue, $newValue, $children = [], $fields = [])
+function makeNode($state, $oldValue, $newValue, $children = [], $fields = [])
 {
     return array_merge([
-        'type' => $objectType,
         'state' => $state,
         'oldValue' => $oldValue,
         'newValue' => $newValue,
@@ -29,12 +26,12 @@ function makeNode($objectType, $state, $oldValue, $newValue, $children = [], $fi
 
 function makeObjectNode($state, $oldValue, $newValue, $properties = [])
 {
-    return makeNode(TYPE_OBJECT, $state, $oldValue, $newValue, $properties);
+    return makeNode($state, $oldValue, $newValue, $properties);
 }
 
 function makePropertyNode($state, $name, $oldValue, $newValue, $children = [])
 {
-    return makeNode(TYPE_PROPERTY, $state, $oldValue, $newValue, $children, ['name' => $name]);
+    return makeNode($state, $oldValue, $newValue, $children, ['name' => $name]);
 }
 
 function makeDiffTree($firstObj, $secondObj)

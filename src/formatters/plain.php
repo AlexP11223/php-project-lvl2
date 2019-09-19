@@ -7,7 +7,6 @@ use const Differ\ADDED;
 use const Differ\REMOVED;
 use const Differ\CHANGED;
 use const Differ\NESTED_CHANGED;
-use const Differ\TYPE_PROPERTY;
 
 function formatValue($value)
 {
