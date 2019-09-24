@@ -9,7 +9,7 @@ use function Differ\utils\get_object_keys;
 const ADDED = 'added';
 const REMOVED = 'removed';
 const CHANGED = 'changed';
-const NESTED_CHANGED = 'nested_changed';
+const NESTED = 'nested'; // not a leaf node
 const UNCHANGED = 'unchanged';
 
 // TODO: add array support?
@@ -51,7 +51,7 @@ function makeDiffTree($firstObj, $secondObj)
         // primitive values should be compared using ===, but for objects it will not work
         if (is_object($old) && is_object($new)) {
             if ($old != $new) {
-                return makePropertyNode(NESTED_CHANGED, $key, $old, $new, [makeDiffTree($old, $new)]);
+                return makePropertyNode(NESTED, $key, $old, $new, [makeDiffTree($old, $new)]);
             }
         } else {
             if ($old !== $new) {
@@ -62,13 +62,7 @@ function makeDiffTree($firstObj, $secondObj)
         return makePropertyNode(UNCHANGED, $key, $old, $new);
     }, $keys);
 
-    $hasChanges = !empty(array_filter($properties, function ($item) {
-        return $item['state'] != UNCHANGED;
-    }));
-    if ($hasChanges) {
-        return makeObjectNode(NESTED_CHANGED, $firstObj, $secondObj, $properties);
-    }
-    return makeObjectNode(UNCHANGED, $firstObj, $secondObj);
+    return makeObjectNode(NESTED, $firstObj, $secondObj, $properties);
 }
 
 function genDiff($firstObj, $secondObj, $format = 'pretty')

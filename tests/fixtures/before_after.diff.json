@@ -1,5 +1,5 @@
 {
-    "state": "nested_changed",
+    "state": "nested",
     "oldValue": {
         "host": "hexlet.io",
         "timeout": 50,
@@ -87,7 +87,7 @@
             "name": "proxy"
         },
         {
-            "state": "nested_changed",
+            "state": "nested",
             "oldValue": {
                 "setting1": "Value 1",
                 "setting2": "200",
@@ -129,7 +129,7 @@
             },
             "children": [
                 {
-                    "state": "nested_changed",
+                    "state": "nested",
                     "oldValue": {
                         "setting1": "Value 1",
                         "setting2": "200",
@@ -201,7 +201,7 @@
                             "name": "setting6"
                         },
                         {
-                            "state": "nested_changed",
+                            "state": "nested",
                             "oldValue": {
                                 "we": {
                                     "need": {
@@ -227,7 +227,7 @@
                             },
                             "children": [
                                 {
-                                    "state": "nested_changed",
+                                    "state": "nested",
                                     "oldValue": {
                                         "we": {
                                             "need": {
@@ -253,7 +253,7 @@
                                     },
                                     "children": [
                                         {
-                                            "state": "nested_changed",
+                                            "state": "nested",
                                             "oldValue": {
                                                 "need": {
                                                     "to": {
@@ -275,7 +275,7 @@
                                             },
                                             "children": [
                                                 {
-                                                    "state": "nested_changed",
+                                                    "state": "nested",
                                                     "oldValue": {
                                                         "need": {
                                                             "to": {
@@ -297,7 +297,7 @@
                                                     },
                                                     "children": [
                                                         {
-                                                            "state": "nested_changed",
+                                                            "state": "nested",
                                                             "oldValue": {
                                                                 "to": {
                                                                     "go": {
@@ -314,7 +314,7 @@
                                                             },
                                                             "children": [
                                                                 {
-                                                                    "state": "nested_changed",
+                                                                    "state": "nested",
                                                                     "oldValue": {
                                                                         "to": {
                                                                             "go": {
@@ -331,7 +331,7 @@
                                                                     },
                                                                     "children": [
                                                                         {
-                                                                            "state": "nested_changed",
+                                                                            "state": "nested",
                                                                             "oldValue": {
                                                                                 "go": {
                                                                                     "deeper": true
@@ -344,7 +344,7 @@
                                                                             },
                                                                             "children": [
                                                                                 {
-                                                                                    "state": "nested_changed",
+                                                                                    "state": "nested",
                                                                                     "oldValue": {
                                                                                         "go": {
                                                                                             "deeper": true
@@ -357,7 +357,7 @@
                                                                                     },
                                                                                     "children": [
                                                                                         {
-                                                                                            "state": "nested_changed",
+                                                                                            "state": "nested",
                                                                                             "oldValue": {
                                                                                                 "deeper": true
                                                                                             },
@@ -366,7 +366,7 @@
                                                                                             },
                                                                                             "children": [
                                                                                                 {
-                                                                                                    "state": "nested_changed",
+                                                                                                    "state": "nested",
                                                                                                     "oldValue": {
                                                                                                         "deeper": true
                                                                                                     },
@@ -435,7 +435,7 @@
             "name": "common"
         },
         {
-            "state": "nested_changed",
+            "state": "nested",
             "oldValue": {
                 "baz": "bas",
                 "foo": "bar"
@@ -446,7 +446,7 @@
             },
             "children": [
                 {
-                    "state": "nested_changed",
+                    "state": "nested",
                     "oldValue": {
                         "baz": "bas",
                         "foo": "bar"

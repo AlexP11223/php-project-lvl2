@@ -3,7 +3,7 @@
 namespace Differ\formatters\pretty;
 
 use const Differ\ADDED;
-use const Differ\NESTED_CHANGED;
+use const Differ\NESTED;
 use const Differ\REMOVED;
 use const Differ\CHANGED;
 use const Differ\UNCHANGED;
@@ -32,7 +32,7 @@ function traverse($node)
             switch ($node['state']) {
                 case UNCHANGED:
                     return $node['oldValue'];
-                case NESTED_CHANGED:
+                case NESTED:
                     $properties = array_merge(...array_map(function ($property) {
                         return traverse($property);
                     }, $node['children']));
@@ -53,7 +53,7 @@ function traverse($node)
                         stateToName(REMOVED) . $name => $node['oldValue'],
                         stateToName(ADDED) . $name => $node['newValue']
                     ];
-                case NESTED_CHANGED:
+                case NESTED:
                     return [$name => traverse($node['children'][0])];
             }
             throw new \Exception("Unsupported PROPERTY state ${node['state']}");

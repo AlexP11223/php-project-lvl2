@@ -6,7 +6,7 @@ use function Funct\Collection\flatten;
 use const Differ\ADDED;
 use const Differ\REMOVED;
 use const Differ\CHANGED;
-use const Differ\NESTED_CHANGED;
+use const Differ\NESTED;
 
 function formatValue($value)
 {
@@ -25,7 +25,7 @@ function getChanges($node, $parents = [])
     $path = implode('.', $currentParents);
 
     switch ($node['state']) {
-        case NESTED_CHANGED:
+        case NESTED:
             $results = flatten(array_map(function ($child) use ($currentParents) {
                 return getChanges($child, $currentParents);
             }, $node['children']));
