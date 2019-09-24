@@ -59,7 +59,7 @@ function makeDiffTree($firstObj, $secondObj)
             }
         }
 
-        return makePropertyNode(UNCHANGED, $key, $firstObj->$key, $firstObj->$key);
+        return makePropertyNode(UNCHANGED, $key, $old, $new);
     }, $keys);
 
     $hasChanges = !empty(array_filter($properties, function ($item) {
