@@ -42,6 +42,7 @@ class DiffTest extends TestCase
     public function testSame()
     {
         self::checkDiff("before.json", "before.json", "before_before.diff.pretty");
+        self::checkDiff("before.json", "before.json", "before_before.diff.json");
     }
 
     public function testDiffDifferentFileTypes()

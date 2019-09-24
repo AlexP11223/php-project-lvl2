@@ -45,14 +45,20 @@ function makeDiffTree($firstObj, $secondObj)
         if (!property_exists($firstObj, $key)) {
             return makePropertyNode(ADDED, $key, null, $secondObj->$key);
         }
-        if ($firstObj->$key !== $secondObj->$key) {
-            $old = $firstObj->$key;
-            $new = $secondObj->$key;
-            if (is_object($old) && is_object($new)) {
+
+        $old = $firstObj->$key;
+        $new = $secondObj->$key;
+        // primitive values should be compared using ===, but for objects it will not work
+        if (is_object($old) && is_object($new)) {
+            if ($old != $new) {
                 return makePropertyNode(NESTED_CHANGED, $key, $old, $new, [makeDiffTree($old, $new)]);
             }
-            return makePropertyNode(CHANGED, $key, $old, $new);
+        } else {
+            if ($old !== $new) {
+                return makePropertyNode(CHANGED, $key, $old, $new);
+            }
         }
+
         return makePropertyNode(UNCHANGED, $key, $firstObj->$key, $firstObj->$key);
     }, $keys);
 
