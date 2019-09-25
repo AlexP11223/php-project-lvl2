@@ -51,7 +51,7 @@ function makeDiffTree($firstObj, $secondObj)
         // primitive values should be compared using ===, but for objects it will not work
         if (is_object($old) && is_object($new)) {
             if ($old != $new) {
-                return makePropertyNode(NESTED, $key, $old, $new, [makeDiffTree($old, $new)]);
+                return makePropertyNode(NESTED, $key, $old, $new, makeDiffTree($old, $new));
             }
         } else {
             if ($old !== $new) {
@@ -62,7 +62,7 @@ function makeDiffTree($firstObj, $secondObj)
         return makePropertyNode(UNCHANGED, $key, $old, $new);
     }, $keys);
 
-    return makeObjectNode(NESTED, $firstObj, $secondObj, $properties);
+    return [makeObjectNode(NESTED, $firstObj, $secondObj, $properties)];
 }
 
 function genDiff($firstObj, $secondObj, $format = 'pretty')

@@ -63,7 +63,7 @@ function traverse($node)
 
 function format($diffTree)
 {
-    $json = traverse($diffTree);
+    $json = traverse($diffTree[0]); // TODO: refactor
 
     $jsonText = json_encode($json, JSON_PRETTY_PRINT);
     $jsonTextWithoutQuotes = preg_replace('/"(.*?)"/', '$1', $jsonText);
