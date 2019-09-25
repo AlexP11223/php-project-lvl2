@@ -24,6 +24,27 @@ function getValueType($node)
     return TYPE_OBJECT;
 }
 
+function removeQuotes($json)
+{
+    return preg_replace('/"(.*?)"/', '$1', $json);
+}
+
+function removeCommas($json)
+{
+    return preg_replace('/,$/m', '', $json);
+}
+
+function prettifyJson($json)
+{
+    return removeCommas(removeQuotes($json));
+}
+
+function formatValue($value)
+{
+    $jsonText = json_encode($value, JSON_PRETTY_PRINT);
+    return json_encode($value);
+}
+
 function traverse($node)
 {
     $valueType = getValueType($node);
@@ -65,9 +86,7 @@ function format($diffTree)
 {
     $json = traverse($diffTree[0]); // TODO: refactor
 
-    $jsonText = json_encode($json, JSON_PRETTY_PRINT);
-    $jsonTextWithoutQuotes = preg_replace('/"(.*?)"/', '$1', $jsonText);
-    $jsonTextWithoutQuotesAndCommas = preg_replace('/,$/m', '', $jsonTextWithoutQuotes);
+    $jsonText = prettifyJson(json_encode($json, JSON_PRETTY_PRINT));
     $diffText = str_replace(
         [
             '  ' . stateToName(ADDED),
@@ -76,7 +95,7 @@ function format($diffTree)
             '+ ',
             '- '
         ],
-        $jsonTextWithoutQuotesAndCommas
+        $jsonText
     );
     return $diffText;
 }
