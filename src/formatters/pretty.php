@@ -80,10 +80,6 @@ function formatValue($value, $level)
 
 function format($nodes, $level = 0)
 {
-    if (empty($nodes)) {
-        return null;
-    }
-
     $lines = array_map(function ($node) use ($level) {
         $valueType = getValueType($node);
         switch ($valueType) {
@@ -115,5 +111,5 @@ function format($nodes, $level = 0)
         throw new \Exception("Unsupported type ${node['type']}");
     }, $nodes);
 
-    return implode(PHP_EOL, array_filter($lines));
+    return implode(PHP_EOL, $lines);
 }

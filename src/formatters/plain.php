@@ -19,10 +19,6 @@ function formatValue($value)
 
 function traverse($nodes, $parents = [])
 {
-    if (empty($nodes)) {
-        return [];
-    }
-
     return array_map(function ($node) use ($parents) {
         $name = $node['name'] ?? null;
         $currentParents = $name ? array_merge($parents, [$name]) : $parents;
