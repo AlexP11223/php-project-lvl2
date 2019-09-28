@@ -1,10 +1,28 @@
-{
-    "state": "nested",
-    "oldValue": {
-        "host": "hexlet.io",
-        "timeout": 50,
-        "proxy": "123.234.53.22",
-        "common": {
+[
+    {
+        "state": "unchanged",
+        "oldValue": "hexlet.io",
+        "newValue": "hexlet.io",
+        "children": [],
+        "name": "host"
+    },
+    {
+        "state": "unchanged",
+        "oldValue": 50,
+        "newValue": 50,
+        "children": [],
+        "name": "timeout"
+    },
+    {
+        "state": "unchanged",
+        "oldValue": "123.234.53.22",
+        "newValue": "123.234.53.22",
+        "children": [],
+        "name": "proxy"
+    },
+    {
+        "state": "unchanged",
+        "oldValue": {
             "setting1": "Value 1",
             "setting2": "200",
             "setting3": true,
@@ -23,19 +41,7 @@
                 }
             }
         },
-        "group1": {
-            "baz": "bas",
-            "foo": "bar"
-        },
-        "group2": {
-            "abc": "12345"
-        }
-    },
-    "newValue": {
-        "host": "hexlet.io",
-        "timeout": 50,
-        "proxy": "123.234.53.22",
-        "common": {
+        "newValue": {
             "setting1": "Value 1",
             "setting2": "200",
             "setting3": true,
@@ -54,102 +60,31 @@
                 }
             }
         },
-        "group1": {
+        "children": [],
+        "name": "common"
+    },
+    {
+        "state": "unchanged",
+        "oldValue": {
             "baz": "bas",
             "foo": "bar"
         },
-        "group2": {
-            "abc": "12345"
-        }
+        "newValue": {
+            "baz": "bas",
+            "foo": "bar"
+        },
+        "children": [],
+        "name": "group1"
     },
-    "children": [
-        {
-            "state": "unchanged",
-            "oldValue": "hexlet.io",
-            "newValue": "hexlet.io",
-            "children": [],
-            "name": "host"
+    {
+        "state": "unchanged",
+        "oldValue": {
+            "abc": "12345"
         },
-        {
-            "state": "unchanged",
-            "oldValue": 50,
-            "newValue": 50,
-            "children": [],
-            "name": "timeout"
+        "newValue": {
+            "abc": "12345"
         },
-        {
-            "state": "unchanged",
-            "oldValue": "123.234.53.22",
-            "newValue": "123.234.53.22",
-            "children": [],
-            "name": "proxy"
-        },
-        {
-            "state": "unchanged",
-            "oldValue": {
-                "setting1": "Value 1",
-                "setting2": "200",
-                "setting3": true,
-                "setting6": {
-                    "key": "value"
-                },
-                "setting42": {
-                    "we": {
-                        "need": {
-                            "to": {
-                                "go": {
-                                    "deeper": true
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "newValue": {
-                "setting1": "Value 1",
-                "setting2": "200",
-                "setting3": true,
-                "setting6": {
-                    "key": "value"
-                },
-                "setting42": {
-                    "we": {
-                        "need": {
-                            "to": {
-                                "go": {
-                                    "deeper": true
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "children": [],
-            "name": "common"
-        },
-        {
-            "state": "unchanged",
-            "oldValue": {
-                "baz": "bas",
-                "foo": "bar"
-            },
-            "newValue": {
-                "baz": "bas",
-                "foo": "bar"
-            },
-            "children": [],
-            "name": "group1"
-        },
-        {
-            "state": "unchanged",
-            "oldValue": {
-                "abc": "12345"
-            },
-            "newValue": {
-                "abc": "12345"
-            },
-            "children": [],
-            "name": "group2"
-        }
-    ]
-}
+        "children": [],
+        "name": "group2"
+    }
+]

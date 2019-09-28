@@ -24,11 +24,6 @@ function makeNode($state, $oldValue, $newValue, $children = [], $fields = [])
     ], $fields);
 }
 
-function makeObjectNode($state, $oldValue, $newValue, $properties = [])
-{
-    return makeNode($state, $oldValue, $newValue, $properties);
-}
-
 function makePropertyNode($state, $name, $oldValue, $newValue, $children = [])
 {
     return makeNode($state, $oldValue, $newValue, $children, ['name' => $name]);
@@ -38,7 +33,7 @@ function makeDiffTree($firstObj, $secondObj)
 {
     $keys = array_unique(array_merge(get_object_keys($firstObj), get_object_keys($secondObj)));
 
-    $properties = array_map(function ($key) use ($firstObj, $secondObj) {
+    return array_values(array_map(function ($key) use ($firstObj, $secondObj) {
         if (!property_exists($secondObj, $key)) {
             return makePropertyNode(REMOVED, $key, $firstObj->$key, null);
         }
@@ -60,9 +55,7 @@ function makeDiffTree($firstObj, $secondObj)
         }
 
         return makePropertyNode(UNCHANGED, $key, $old, $new);
-    }, $keys);
-
-    return [makeObjectNode(NESTED, $firstObj, $secondObj, $properties)];
+    }, $keys));
 }
 
 function genDiff($firstObj, $secondObj, $format = 'pretty')

@@ -1,10 +1,28 @@
-{
-    "state": "nested",
-    "oldValue": {
-        "host": "hexlet.io",
-        "timeout": 50,
-        "proxy": "123.234.53.22",
-        "common": {
+[
+    {
+        "state": "unchanged",
+        "oldValue": "hexlet.io",
+        "newValue": "hexlet.io",
+        "children": [],
+        "name": "host"
+    },
+    {
+        "state": "changed",
+        "oldValue": 50,
+        "newValue": 20,
+        "children": [],
+        "name": "timeout"
+    },
+    {
+        "state": "removed",
+        "oldValue": "123.234.53.22",
+        "newValue": null,
+        "children": [],
+        "name": "proxy"
+    },
+    {
+        "state": "nested",
+        "oldValue": {
             "setting1": "Value 1",
             "setting2": "200",
             "setting3": true,
@@ -23,20 +41,7 @@
                 }
             }
         },
-        "group1": {
-            "baz": "bas",
-            "foo": "bar"
-        },
-        "group2": {
-            "abc": "12345"
-        }
-    },
-    "newValue": {
-        "timeout": 20,
-        "verbose": true,
-        "host": "hexlet.io",
-        "empty": "",
-        "common": {
+        "newValue": {
             "setting1": "Value 1",
             "setting3": true,
             "setting4": "blah blah",
@@ -56,46 +61,40 @@
                 }
             }
         },
-        "group1": {
-            "foo": "bar",
-            "baz": "bars"
-        },
-        "group3": {
-            "fee": "100500"
-        }
-    },
-    "children": [
-        {
-            "state": "unchanged",
-            "oldValue": "hexlet.io",
-            "newValue": "hexlet.io",
-            "children": [],
-            "name": "host"
-        },
-        {
-            "state": "changed",
-            "oldValue": 50,
-            "newValue": 20,
-            "children": [],
-            "name": "timeout"
-        },
-        {
-            "state": "removed",
-            "oldValue": "123.234.53.22",
-            "newValue": null,
-            "children": [],
-            "name": "proxy"
-        },
-        {
-            "state": "nested",
-            "oldValue": {
-                "setting1": "Value 1",
-                "setting2": "200",
-                "setting3": true,
-                "setting6": {
+        "children": [
+            {
+                "state": "unchanged",
+                "oldValue": "Value 1",
+                "newValue": "Value 1",
+                "children": [],
+                "name": "setting1"
+            },
+            {
+                "state": "removed",
+                "oldValue": "200",
+                "newValue": null,
+                "children": [],
+                "name": "setting2"
+            },
+            {
+                "state": "unchanged",
+                "oldValue": true,
+                "newValue": true,
+                "children": [],
+                "name": "setting3"
+            },
+            {
+                "state": "removed",
+                "oldValue": {
                     "key": "value"
                 },
-                "setting42": {
+                "newValue": null,
+                "children": [],
+                "name": "setting6"
+            },
+            {
+                "state": "nested",
+                "oldValue": {
                     "we": {
                         "need": {
                             "to": {
@@ -105,16 +104,8 @@
                             }
                         }
                     }
-                }
-            },
-            "newValue": {
-                "setting1": "Value 1",
-                "setting3": true,
-                "setting4": "blah blah",
-                "setting5": {
-                    "key5": "value5"
                 },
-                "setting42": {
+                "newValue": {
                     "we": {
                         "dont": true,
                         "need": {
@@ -125,387 +116,175 @@
                             }
                         }
                     }
-                }
-            },
-            "children": [
-                {
-                    "state": "nested",
-                    "oldValue": {
-                        "setting1": "Value 1",
-                        "setting2": "200",
-                        "setting3": true,
-                        "setting6": {
-                            "key": "value"
+                },
+                "children": [
+                    {
+                        "state": "nested",
+                        "oldValue": {
+                            "need": {
+                                "to": {
+                                    "go": {
+                                        "deeper": true
+                                    }
+                                }
+                            }
                         },
-                        "setting42": {
-                            "we": {
-                                "need": {
+                        "newValue": {
+                            "dont": true,
+                            "need": {
+                                "to": {
+                                    "go": {
+                                        "deeper": false
+                                    }
+                                }
+                            }
+                        },
+                        "children": [
+                            {
+                                "state": "nested",
+                                "oldValue": {
                                     "to": {
                                         "go": {
                                             "deeper": true
                                         }
                                     }
-                                }
-                            }
-                        }
-                    },
-                    "newValue": {
-                        "setting1": "Value 1",
-                        "setting3": true,
-                        "setting4": "blah blah",
-                        "setting5": {
-                            "key5": "value5"
-                        },
-                        "setting42": {
-                            "we": {
-                                "dont": true,
-                                "need": {
+                                },
+                                "newValue": {
                                     "to": {
                                         "go": {
                                             "deeper": false
                                         }
                                     }
-                                }
-                            }
-                        }
-                    },
-                    "children": [
-                        {
-                            "state": "unchanged",
-                            "oldValue": "Value 1",
-                            "newValue": "Value 1",
-                            "children": [],
-                            "name": "setting1"
-                        },
-                        {
-                            "state": "removed",
-                            "oldValue": "200",
-                            "newValue": null,
-                            "children": [],
-                            "name": "setting2"
-                        },
-                        {
-                            "state": "unchanged",
-                            "oldValue": true,
-                            "newValue": true,
-                            "children": [],
-                            "name": "setting3"
-                        },
-                        {
-                            "state": "removed",
-                            "oldValue": {
-                                "key": "value"
-                            },
-                            "newValue": null,
-                            "children": [],
-                            "name": "setting6"
-                        },
-                        {
-                            "state": "nested",
-                            "oldValue": {
-                                "we": {
-                                    "need": {
-                                        "to": {
+                                },
+                                "children": [
+                                    {
+                                        "state": "nested",
+                                        "oldValue": {
                                             "go": {
                                                 "deeper": true
                                             }
-                                        }
-                                    }
-                                }
-                            },
-                            "newValue": {
-                                "we": {
-                                    "dont": true,
-                                    "need": {
-                                        "to": {
+                                        },
+                                        "newValue": {
                                             "go": {
                                                 "deeper": false
                                             }
-                                        }
+                                        },
+                                        "children": [
+                                            {
+                                                "state": "nested",
+                                                "oldValue": {
+                                                    "deeper": true
+                                                },
+                                                "newValue": {
+                                                    "deeper": false
+                                                },
+                                                "children": [
+                                                    {
+                                                        "state": "changed",
+                                                        "oldValue": true,
+                                                        "newValue": false,
+                                                        "children": [],
+                                                        "name": "deeper"
+                                                    }
+                                                ],
+                                                "name": "go"
+                                            }
+                                        ],
+                                        "name": "to"
                                     }
-                                }
+                                ],
+                                "name": "need"
                             },
-                            "children": [
-                                {
-                                    "state": "nested",
-                                    "oldValue": {
-                                        "we": {
-                                            "need": {
-                                                "to": {
-                                                    "go": {
-                                                        "deeper": true
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "newValue": {
-                                        "we": {
-                                            "dont": true,
-                                            "need": {
-                                                "to": {
-                                                    "go": {
-                                                        "deeper": false
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    },
-                                    "children": [
-                                        {
-                                            "state": "nested",
-                                            "oldValue": {
-                                                "need": {
-                                                    "to": {
-                                                        "go": {
-                                                            "deeper": true
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "newValue": {
-                                                "dont": true,
-                                                "need": {
-                                                    "to": {
-                                                        "go": {
-                                                            "deeper": false
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "children": [
-                                                {
-                                                    "state": "nested",
-                                                    "oldValue": {
-                                                        "need": {
-                                                            "to": {
-                                                                "go": {
-                                                                    "deeper": true
-                                                                }
-                                                            }
-                                                        }
-                                                    },
-                                                    "newValue": {
-                                                        "dont": true,
-                                                        "need": {
-                                                            "to": {
-                                                                "go": {
-                                                                    "deeper": false
-                                                                }
-                                                            }
-                                                        }
-                                                    },
-                                                    "children": [
-                                                        {
-                                                            "state": "nested",
-                                                            "oldValue": {
-                                                                "to": {
-                                                                    "go": {
-                                                                        "deeper": true
-                                                                    }
-                                                                }
-                                                            },
-                                                            "newValue": {
-                                                                "to": {
-                                                                    "go": {
-                                                                        "deeper": false
-                                                                    }
-                                                                }
-                                                            },
-                                                            "children": [
-                                                                {
-                                                                    "state": "nested",
-                                                                    "oldValue": {
-                                                                        "to": {
-                                                                            "go": {
-                                                                                "deeper": true
-                                                                            }
-                                                                        }
-                                                                    },
-                                                                    "newValue": {
-                                                                        "to": {
-                                                                            "go": {
-                                                                                "deeper": false
-                                                                            }
-                                                                        }
-                                                                    },
-                                                                    "children": [
-                                                                        {
-                                                                            "state": "nested",
-                                                                            "oldValue": {
-                                                                                "go": {
-                                                                                    "deeper": true
-                                                                                }
-                                                                            },
-                                                                            "newValue": {
-                                                                                "go": {
-                                                                                    "deeper": false
-                                                                                }
-                                                                            },
-                                                                            "children": [
-                                                                                {
-                                                                                    "state": "nested",
-                                                                                    "oldValue": {
-                                                                                        "go": {
-                                                                                            "deeper": true
-                                                                                        }
-                                                                                    },
-                                                                                    "newValue": {
-                                                                                        "go": {
-                                                                                            "deeper": false
-                                                                                        }
-                                                                                    },
-                                                                                    "children": [
-                                                                                        {
-                                                                                            "state": "nested",
-                                                                                            "oldValue": {
-                                                                                                "deeper": true
-                                                                                            },
-                                                                                            "newValue": {
-                                                                                                "deeper": false
-                                                                                            },
-                                                                                            "children": [
-                                                                                                {
-                                                                                                    "state": "nested",
-                                                                                                    "oldValue": {
-                                                                                                        "deeper": true
-                                                                                                    },
-                                                                                                    "newValue": {
-                                                                                                        "deeper": false
-                                                                                                    },
-                                                                                                    "children": [
-                                                                                                        {
-                                                                                                            "state": "changed",
-                                                                                                            "oldValue": true,
-                                                                                                            "newValue": false,
-                                                                                                            "children": [],
-                                                                                                            "name": "deeper"
-                                                                                                        }
-                                                                                                    ]
-                                                                                                }
-                                                                                            ],
-                                                                                            "name": "go"
-                                                                                        }
-                                                                                    ]
-                                                                                }
-                                                                            ],
-                                                                            "name": "to"
-                                                                        }
-                                                                    ]
-                                                                }
-                                                            ],
-                                                            "name": "need"
-                                                        },
-                                                        {
-                                                            "state": "added",
-                                                            "oldValue": null,
-                                                            "newValue": true,
-                                                            "children": [],
-                                                            "name": "dont"
-                                                        }
-                                                    ]
-                                                }
-                                            ],
-                                            "name": "we"
-                                        }
-                                    ]
-                                }
-                            ],
-                            "name": "setting42"
-                        },
-                        {
-                            "state": "added",
-                            "oldValue": null,
-                            "newValue": "blah blah",
-                            "children": [],
-                            "name": "setting4"
-                        },
-                        {
-                            "state": "added",
-                            "oldValue": null,
-                            "newValue": {
-                                "key5": "value5"
-                            },
-                            "children": [],
-                            "name": "setting5"
-                        }
-                    ]
-                }
-            ],
-            "name": "common"
-        },
-        {
-            "state": "nested",
-            "oldValue": {
-                "baz": "bas",
-                "foo": "bar"
+                            {
+                                "state": "added",
+                                "oldValue": null,
+                                "newValue": true,
+                                "children": [],
+                                "name": "dont"
+                            }
+                        ],
+                        "name": "we"
+                    }
+                ],
+                "name": "setting42"
             },
-            "newValue": {
-                "foo": "bar",
-                "baz": "bars"
+            {
+                "state": "added",
+                "oldValue": null,
+                "newValue": "blah blah",
+                "children": [],
+                "name": "setting4"
             },
-            "children": [
-                {
-                    "state": "nested",
-                    "oldValue": {
-                        "baz": "bas",
-                        "foo": "bar"
-                    },
-                    "newValue": {
-                        "foo": "bar",
-                        "baz": "bars"
-                    },
-                    "children": [
-                        {
-                            "state": "changed",
-                            "oldValue": "bas",
-                            "newValue": "bars",
-                            "children": [],
-                            "name": "baz"
-                        },
-                        {
-                            "state": "unchanged",
-                            "oldValue": "bar",
-                            "newValue": "bar",
-                            "children": [],
-                            "name": "foo"
-                        }
-                    ]
-                }
-            ],
-            "name": "group1"
+            {
+                "state": "added",
+                "oldValue": null,
+                "newValue": {
+                    "key5": "value5"
+                },
+                "children": [],
+                "name": "setting5"
+            }
+        ],
+        "name": "common"
+    },
+    {
+        "state": "nested",
+        "oldValue": {
+            "baz": "bas",
+            "foo": "bar"
         },
-        {
-            "state": "removed",
-            "oldValue": {
-                "abc": "12345"
+        "newValue": {
+            "foo": "bar",
+            "baz": "bars"
+        },
+        "children": [
+            {
+                "state": "changed",
+                "oldValue": "bas",
+                "newValue": "bars",
+                "children": [],
+                "name": "baz"
             },
-            "newValue": null,
-            "children": [],
-            "name": "group2"
+            {
+                "state": "unchanged",
+                "oldValue": "bar",
+                "newValue": "bar",
+                "children": [],
+                "name": "foo"
+            }
+        ],
+        "name": "group1"
+    },
+    {
+        "state": "removed",
+        "oldValue": {
+            "abc": "12345"
         },
-        {
-            "state": "added",
-            "oldValue": null,
-            "newValue": true,
-            "children": [],
-            "name": "verbose"
+        "newValue": null,
+        "children": [],
+        "name": "group2"
+    },
+    {
+        "state": "added",
+        "oldValue": null,
+        "newValue": true,
+        "children": [],
+        "name": "verbose"
+    },
+    {
+        "state": "added",
+        "oldValue": null,
+        "newValue": "",
+        "children": [],
+        "name": "empty"
+    },
+    {
+        "state": "added",
+        "oldValue": null,
+        "newValue": {
+            "fee": "100500"
         },
-        {
-            "state": "added",
-            "oldValue": null,
-            "newValue": "",
-            "children": [],
-            "name": "empty"
-        },
-        {
-            "state": "added",
-            "oldValue": null,
-            "newValue": {
-                "fee": "100500"
-            },
-            "children": [],
-            "name": "group3"
-        }
-    ]
-}
+        "children": [],
+        "name": "group3"
+    }
+]

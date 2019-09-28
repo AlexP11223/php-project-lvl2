@@ -9,18 +9,7 @@ use const Differ\REMOVED;
 use const Differ\CHANGED;
 use const Differ\UNCHANGED;
 
-const TYPE_OBJECT = 'object';
-const TYPE_PROPERTY = 'property';
-
 const INDENT_SIZE = 4;
-
-function getValueType($node)
-{
-    if (isset($node['name'])) {
-        return TYPE_PROPERTY;
-    }
-    return TYPE_OBJECT;
-}
 
 function removeQuotes($json)
 {
@@ -78,7 +67,7 @@ function formatValue($value, $level)
     return implode(PHP_EOL, $indentedLines);
 }
 
-function format($nodes, $level = 0)
+function traverse($nodes, $level = 0)
 {
     $lines = array_map(function ($node) use ($level) {
         $name = $node['name'] ?? null;
@@ -93,19 +82,17 @@ function format($nodes, $level = 0)
                 return indent($level, REMOVED) . "$name: " . formatValue($node['oldValue'], $level) . PHP_EOL .
                     indent($level, ADDED) . "$name: " . formatValue($node['newValue'], $level);
             case NESTED:
-                $valueType = getValueType($node);
-                switch ($valueType) {
-                    case TYPE_OBJECT:
-                        return '{' . PHP_EOL .
-                            format($node['children'], $level + 1) . PHP_EOL .
-                            indent($level) . '}';
-                    case TYPE_PROPERTY:
-                        return indent($level) . "$name: " . format($node['children'], $level);
-                }
-                throw new \Exception("Unsupported value type $valueType");
+                return indent($level) . "$name: {" . PHP_EOL .
+                    traverse($node['children'], $level + 1) . PHP_EOL .
+                    indent($level) . '}';
         }
         throw new \Exception("Unsupported state ${node['state']}");
     }, $nodes);
 
     return implode(PHP_EOL, $lines);
+}
+
+function format($diffTree)
+{
+    return '{' . PHP_EOL . traverse($diffTree, 1) . PHP_EOL . '}';
 }
