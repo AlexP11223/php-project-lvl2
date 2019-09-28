@@ -81,34 +81,30 @@ function formatValue($value, $level)
 function format($nodes, $level = 0)
 {
     $lines = array_map(function ($node) use ($level) {
-        $valueType = getValueType($node);
-        switch ($valueType) {
-            case TYPE_OBJECT:
-                switch ($node['state']) {
-                    case NESTED:
+        $name = $node['name'] ?? null;
+        switch ($node['state']) {
+            case UNCHANGED:
+                return indent($level) . "$name: " . formatValue($node['oldValue'], $level);
+            case ADDED:
+                return indent($level, ADDED) . "$name: " . formatValue($node['newValue'], $level);
+            case REMOVED:
+                return indent($level, REMOVED) . "$name: " . formatValue($node['oldValue'], $level);
+            case CHANGED:
+                return indent($level, REMOVED) . "$name: " . formatValue($node['oldValue'], $level) . PHP_EOL .
+                    indent($level, ADDED) . "$name: " . formatValue($node['newValue'], $level);
+            case NESTED:
+                $valueType = getValueType($node);
+                switch ($valueType) {
+                    case TYPE_OBJECT:
                         return '{' . PHP_EOL .
                             format($node['children'], $level + 1) . PHP_EOL .
                             indent($level) . '}';
-                }
-                throw new \Exception("Unsupported OBJECT state ${node['state']}");
-            case TYPE_PROPERTY:
-                $name = $node['name'];
-                switch ($node['state']) {
-                    case UNCHANGED:
-                        return indent($level) . "$name: " . formatValue($node['oldValue'], $level);
-                    case ADDED:
-                        return indent($level, ADDED) . "$name: " . formatValue($node['newValue'], $level);
-                    case REMOVED:
-                        return indent($level, REMOVED) . "$name: " . formatValue($node['oldValue'], $level);
-                    case CHANGED:
-                        return indent($level, REMOVED) . "$name: " . formatValue($node['oldValue'], $level) . PHP_EOL .
-                            indent($level, ADDED) . "$name: " . formatValue($node['newValue'], $level);
-                    case NESTED:
+                    case TYPE_PROPERTY:
                         return indent($level) . "$name: " . format($node['children'], $level);
                 }
-                throw new \Exception("Unsupported PROPERTY state ${node['state']}");
+                throw new \Exception("Unsupported value type $valueType");
         }
-        throw new \Exception("Unsupported type ${node['type']}");
+        throw new \Exception("Unsupported state ${node['state']}");
     }, $nodes);
 
     return implode(PHP_EOL, $lines);
